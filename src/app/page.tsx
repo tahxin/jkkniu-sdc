@@ -30,6 +30,12 @@ const EVENTS = [
   },
   {
     status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
+    date: "TBA", category: "Talk Show",
+    title: "Let's Talk",
+    desc: "An interactive session where industry experts share insights, discuss career journeys, and answer student queries.",
+  },
+  {
+    status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
     date: "TBA", category: "Competition",
     title: "Freshers' Choice Public Speaking",
     desc: "Our signature public speaking competition for new students to showcase their communication skills.",
@@ -39,6 +45,12 @@ const EVENTS = [
     date: "Past Event", category: "Competition",
     title: "BizCase Competition",
     desc: "A business case-solving challenge testing analytical and problem-solving abilities.",
+  },
+  {
+    status: "Past", statusColor: "#6B6B6B", statusBg: "#F7F7F5",
+    date: "Past Event", category: "Recruitment",
+    title: "Leaders Hunting",
+    desc: "A flagship recruitment and leadership assessment program to find the next generation of club executives.",
   },
 ];
 
@@ -82,7 +94,7 @@ export default function Home() {
           </h1>
 
           <p className="text-[1.1rem] leading-[1.75] text-white/55 max-w-xl mb-12">
-            Established in 2018, JKKNIU-SDC fosters a skill development movement, empowering students to bridge the gap between academic learning and professional requirements.
+            Established in 2018, JKKNIU-SDC fosters a skill development movement, empowering students to bridge the gap between academic learning and professional requirements. We have proudly worked with all major MNC and corporate companies of Bangladesh.
           </p>
 
           {/* CTAs */}
@@ -237,12 +249,12 @@ export default function Home() {
       <section className="px-5 md:px-8 py-16 bg-white border-t border-[#E8E8E8]">
         <div className="container mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-8">
           <div>
-            <p className="section-label mb-2">For Companies</p>
+            <p className="section-label mb-2">Corporate Network</p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-              Recruit top student talent.
+              Trusted by Top Companies.
             </h2>
-            <p className="text-[14px] text-[#6B6B6B] mt-2 max-w-sm">
-              Partner with JKKNIU-SDC to access Bangladesh's brightest students.
+            <p className="text-[14px] text-[#6B6B6B] mt-2 max-w-lg">
+              We have worked with all major MNC and corporate companies of Bangladesh. Partner with JKKNIU-SDC to access exceptional student talent.
             </p>
           </div>
           <Button
