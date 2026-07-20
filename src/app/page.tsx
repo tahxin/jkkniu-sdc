@@ -266,6 +266,43 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════
+          GALLERY / HIGHLIGHTS
+          ══════════════════════════ */}
+      <section className="px-5 md:px-8 py-16 bg-[#FAFAFA] border-t border-[#E8E8E8]">
+        <div className="container mx-auto max-w-5xl">
+          <div className="text-center mb-10">
+            <p className="section-label mb-2 mx-auto justify-center">Moments</p>
+            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
+              Latest Highlights
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* CV Writing */}
+            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white relative group">
+              <img src="/images/cv-writing.jpg" alt="CV Writing Competition" className="w-full h-auto object-cover aspect-square group-hover:scale-105 transition-transform duration-700" />
+            </div>
+            {/* Alumni Meetup */}
+            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white relative group">
+              <img src="/images/alumni-meetup.jpg" alt="Alumni Meetup" className="w-full h-auto object-cover aspect-square group-hover:scale-105 transition-transform duration-700" />
+            </div>
+            {/* MoU Signing */}
+            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white relative group">
+              <img src="/images/mou-signing.jpg" alt="MoU Signing" className="w-full h-auto object-cover aspect-square group-hover:scale-105 transition-transform duration-700" />
+            </div>
+            {/* New Year 2026 */}
+            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white md:col-span-2 lg:col-span-1 relative group">
+              <img src="/images/new-year-2026.jpg" alt="Happy New Year 2026" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+            </div>
+            {/* Recap 2025 */}
+            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white md:col-span-2 relative group flex">
+              <img src="/images/recap-2025.jpg" alt="2025 Recap" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════
           FULL CTA — light gray band
           ══════════════════════════ */}
       <section className="px-5 md:px-8 py-20 border-t border-[#E8E8E8] bg-[#F7F7F5]">

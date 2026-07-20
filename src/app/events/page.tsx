@@ -24,6 +24,8 @@ interface ClubEvent {
   attendees: string;
   /** Tailwind gradient classes for the thumbnail */
   gradient: string;
+  /** Optional image to display instead of gradient */
+  image?: string;
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -88,6 +90,7 @@ const events: ClubEvent[] = [
     description: "Registration is Open Now! Enhance your professional profile and stand out to top recruiters in our premier CV writing challenge.",
     attendees: "Open for all students",
     gradient: "from-[#053e85] to-[#1e88e5]",
+    image: "/images/cv-writing.jpg",
   },
   {
     id: "farewell-alumni-meetup",
@@ -99,6 +102,7 @@ const events: ClubEvent[] = [
     description: "Join us for an evening of nostalgia and networking as we bid farewell to our graduating members and welcome our esteemed alumni back to the campus.",
     attendees: "Members & Alumni",
     gradient: "from-[#10b981] to-[#047857]",
+    image: "/images/alumni-meetup.jpg",
   },
   // ── Past ──────────────────────────────────────────────────────────────────
   {
@@ -163,15 +167,21 @@ function EventCard({ event }: { event: ClubEvent }) {
     <article className="group flex flex-col bg-white border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300">
       {/* Thumbnail */}
       <div
-        className={`relative h-44 bg-gradient-to-br ${event.gradient} flex items-center justify-center`}
+        className={`relative h-44 bg-gradient-to-br ${event.gradient} flex items-center justify-center overflow-hidden`}
         aria-hidden="true"
       >
-        {/* Decorative circles */}
-        <div className="absolute top-4 right-4 h-16 w-16 rounded-full bg-white/10" />
-        <div className="absolute bottom-4 left-4 h-10 w-10 rounded-full bg-white/10" />
-        <span className="relative text-white/80 text-4xl font-bold tracking-tight select-none">
-          {event.title.charAt(0)}
-        </span>
+        {event.image ? (
+          <img src={event.image} alt={event.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
+        ) : (
+          <>
+            {/* Decorative circles */}
+            <div className="absolute top-4 right-4 h-16 w-16 rounded-full bg-white/10" />
+            <div className="absolute bottom-4 left-4 h-10 w-10 rounded-full bg-white/10" />
+            <span className="relative text-white/80 text-4xl font-bold tracking-tight select-none">
+              {event.title.charAt(0)}
+            </span>
+          </>
+        )}
       </div>
 
       {/* Body */}
