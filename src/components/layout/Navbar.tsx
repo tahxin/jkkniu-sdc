@@ -43,7 +43,7 @@ export function Navbar() {
           <div className="flex items-center justify-center h-9 w-9 bg-white p-1 rounded-md shadow-sm border border-[#E8E8E8]">
             <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU-SDC Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="font-bold text-[15px] tracking-tight" style={{ color: BK }}>
+          <span className="font-bold text-[15px] tracking-tight transition-colors" style={{ color: scrolled ? BK : "white" }}>
             JKKNIU<span style={{ color: R }}>-SDC</span>
           </span>
         </Link>
@@ -54,7 +54,12 @@ export function Navbar() {
             <li key={l.name}>
               <Link
                 href={l.href}
-                className="px-3 py-2 text-[13px] font-medium text-[#6B6B6B] hover:text-[#0D0D0D] rounded-md hover:bg-[#F7F7F5] transition-colors"
+                className={cn(
+                  "px-3 py-2 text-[13px] font-medium rounded-md transition-colors",
+                  scrolled 
+                    ? "text-[#6B6B6B] hover:text-[#0D0D0D] hover:bg-[#F7F7F5]" 
+                    : "text-white/70 hover:text-white hover:bg-white/10"
+                )}
               >
                 {l.name}
               </Link>
@@ -64,7 +69,10 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
-          <Link href="/login" className="text-[13px] font-medium text-[#6B6B6B] hover:text-[#0D0D0D] transition-colors">
+          <Link href="/login" className={cn(
+            "text-[13px] font-medium transition-colors",
+            scrolled ? "text-[#6B6B6B] hover:text-[#0D0D0D]" : "text-white/70 hover:text-white"
+          )}>
             Sign in
           </Link>
           <Button
@@ -83,7 +91,12 @@ export function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="flex lg:hidden h-9 w-9 rounded-lg hover:bg-[#F7F7F5]"
+                className={cn(
+                  "flex lg:hidden h-9 w-9 rounded-lg transition-colors",
+                  scrolled 
+                    ? "hover:bg-[#F7F7F5] text-[#0D0D0D]" 
+                    : "hover:bg-white/10 text-white"
+                )}
               />
             }
           >
