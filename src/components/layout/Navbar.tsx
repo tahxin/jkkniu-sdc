@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Menu, X, ArrowRight } from "lucide-react";
 
 const R = "#C8001E";   // red
-const Y = "#F5A800";   // amber-gold
 const BK = "#0D0D0D";  // near-black
 
 const NAV_LINKS = [
@@ -41,17 +40,9 @@ export function Navbar() {
 
         {/* Wordmark */}
         <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          {/* Red square badge with yellow dot accent */}
-          <span
-            className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-white font-black text-[10px] tracking-widest relative"
-            style={{ backgroundColor: R }}
-          >
-            SDC
-            <span
-              className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full border-2 border-white"
-              style={{ backgroundColor: Y }}
-            />
-          </span>
+          <div className="flex items-center justify-center h-9 w-9 bg-white p-1 rounded-md shadow-sm border border-[#E8E8E8]">
+            <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU-SDC Logo" className="w-full h-full object-contain" />
+          </div>
           <span className="font-bold text-[15px] tracking-tight" style={{ color: BK }}>
             JKKNIU<span style={{ color: R }}>-SDC</span>
           </span>
@@ -103,16 +94,12 @@ export function Navbar() {
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <div className="flex flex-col h-full">
 
-              {/* Drawer header — black bar with red/yellow logo */}
+              {/* Drawer header — black bar with logo */}
               <div className="flex items-center justify-between px-5 h-16 border-b border-[#E8E8E8]" style={{ backgroundColor: BK }}>
                 <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2.5">
-                  <span
-                    className="inline-flex h-8 w-8 items-center justify-center rounded-lg text-white font-black text-[10px] relative"
-                    style={{ backgroundColor: R }}
-                  >
-                    SDC
-                    <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full border-2 border-white" style={{ backgroundColor: Y }} />
-                  </span>
+                  <div className="flex items-center justify-center h-8 w-8 bg-white p-1 rounded-md shadow-sm">
+                    <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU-SDC Logo" className="w-full h-full object-contain" />
+                  </div>
                   <span className="font-bold text-[15px] text-white">JKKNIU-SDC</span>
                 </Link>
               </div>

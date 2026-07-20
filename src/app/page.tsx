@@ -3,43 +3,42 @@ import { ArrowRight, Users, Calendar, Zap, Globe, BookOpen, TrendingUp } from "l
 import { Button } from "@/components/ui/button";
 
 const R  = "#C8001E";
-const Y  = "#F5A800";
 const BK = "#0D0D0D";
 
 const STATS = [
   { n: "500+",   label: "Active members" },
-  { n: "150+",   label: "Events hosted"  },
-  { n: "15",     label: "Years of impact"},
-  { n: "3,000+", label: "Alumni network" },
+  { n: "100+",   label: "Events hosted"  },
+  { n: "2018",   label: "Year Established"},
+  { n: "Job Fairs", label: "Career pipelines" },
 ];
 
 const FEATURES = [
-  { icon: Zap,        title: "Workshops & Bootcamps",  desc: "Hands-on sessions with industry practitioners covering the latest skills in tech and business." },
-  { icon: Globe,      title: "National Summits",        desc: "Multi-day flagship events bringing together students, speakers, and corporate sponsors." },
-  { icon: TrendingUp, title: "Career Development",      desc: "Job fairs, mentorship, and direct pipelines to Bangladesh's leading employers." },
-  { icon: BookOpen,   title: "Research & Publications", desc: "Publishing student research, case studies, and thought-leadership content." },
-  { icon: Users,      title: "Community Network",       desc: "A 3,000+ strong alumni network spanning Bangladesh and beyond." },
-  { icon: Calendar,   title: "Hackathons",              desc: "48-hour competitions that turn raw ideas into working prototypes." },
+  { icon: Zap,        title: "Workshops & Seminars",  desc: "Regular sessions covering professional development, bridging academic learning and industry needs." },
+  { icon: Globe,      title: "Job Fairs",               desc: "Connecting students with a diverse range of leading companies and industries for networking and career advancement." },
+  { icon: TrendingUp, title: "Competitions",            desc: "Hosting academic and professional competitions like 'Freshers' Choice' and 'BizCase'." },
+  { icon: BookOpen,   title: "Skill Development",       desc: "Fostering a 'skill development movement' to produce future-ready, competitive graduates." },
+  { icon: Users,      title: "Leadership & Teamwork",   desc: "Opportunities for students to take on executive roles and actively participate in club operations." },
+  { icon: Calendar,   title: "Networking Events",       desc: "Building a strong community of alumni, current students, and corporate partners." },
 ];
 
 const EVENTS = [
   {
     status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
-    date: "15–16 Aug 2026", category: "Summit",
-    title: "Tech Summit 2026",
-    desc: "Our national gathering of developers, designers, and entrepreneurs — 500+ attendees expected.",
+    date: "TBA", category: "Job Fair",
+    title: "Campus Job Fair",
+    desc: "Connect with leading companies and explore career opportunities right on campus.",
   },
   {
     status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
-    date: "Sep 2026", category: "Competition",
-    title: "Hackathon Season 4",
-    desc: "48 hours. One idea. Build, iterate, and pitch to a panel of industry judges.",
+    date: "TBA", category: "Competition",
+    title: "Freshers' Choice Public Speaking",
+    desc: "Our signature public speaking competition for new students to showcase their communication skills.",
   },
   {
     status: "Past", statusColor: "#6B6B6B", statusBg: "#F7F7F5",
-    date: "Mar 2025", category: "Summit",
-    title: "National Tech Summit 2025",
-    desc: "Our biggest event to date — 400+ attendees and 20+ speakers from across the country.",
+    date: "Past Event", category: "Competition",
+    title: "BizCase Competition",
+    desc: "A business case-solving challenge testing analytical and problem-solving abilities.",
   },
 ];
 
@@ -56,32 +55,34 @@ export default function Home() {
       >
         <div className="container mx-auto max-w-5xl">
 
-          {/* Eyebrow with yellow rule */}
-          <div className="flex items-center gap-3 mb-10">
-            <span className="h-[3px] w-8 rounded-full" style={{ backgroundColor: Y }} />
-            <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-white/50">
-              JKKNIU Student Development Club
-            </span>
+          {/* Logo and Eyebrow */}
+          <div className="flex flex-col gap-6 mb-10">
+            <div className="w-20 h-20 bg-white p-3 rounded-2xl flex items-center justify-center shadow-lg">
+              <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU SDC Logo" className="w-full h-full object-contain" />
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="h-[3px] w-8 rounded-full" style={{ backgroundColor: R }} />
+              <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-white/50">
+                Jatiya Kabi Kazi Nazrul Islam University Skill Development Club
+              </span>
+            </div>
           </div>
 
           {/* Massive headline */}
           <h1 className="text-[clamp(3rem,9vw,6rem)] font-bold tracking-[-0.03em] leading-[1.02] text-white mb-8 max-w-4xl">
             Where students{" "}
             <span style={{ color: R }}>become</span>{" "}
-            <span
-              className="relative inline-block"
-              style={{ color: Y }}
-            >
-              leaders.
+            <span className="relative inline-block text-white">
+              experts.
               <span
                 className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full"
-                style={{ backgroundColor: Y, opacity: 0.4 }}
+                style={{ backgroundColor: R, opacity: 0.8 }}
               />
             </span>
           </h1>
 
           <p className="text-[1.1rem] leading-[1.75] text-white/55 max-w-xl mb-12">
-            JKKNIU-SDC empowers students at Jatiya Kabi Kazi Nazrul Islam University through innovation, industry partnerships, and high-impact community programmes.
+            Established in 2018, JKKNIU-SDC fosters a skill development movement, empowering students to bridge the gap between academic learning and professional requirements.
           </p>
 
           {/* CTAs */}
@@ -111,8 +112,7 @@ export default function Home() {
             {STATS.map(({ n, label }) => (
               <div key={label}>
                 <p
-                  className="text-3xl md:text-4xl font-bold tracking-tight mb-1"
-                  style={{ color: Y }}
+                  className="text-3xl md:text-4xl font-bold tracking-tight mb-1 text-white"
                 >
                   {n}
                 </p>
@@ -256,9 +256,9 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════
-          FULL CTA — yellow band
+          FULL CTA — light gray band
           ══════════════════════════ */}
-      <section className="px-5 md:px-8 py-20 border-t border-[#E8E8E8]" style={{ backgroundColor: Y }}>
+      <section className="px-5 md:px-8 py-20 border-t border-[#E8E8E8] bg-[#F7F7F5]">
         <div className="container mx-auto max-w-5xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <p className="text-[11px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(0,0,0,0.45)" }}>
