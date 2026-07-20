@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { auth } from "@/auth";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const spaceGrotesk = Space_Grotesk({
@@ -32,17 +33,20 @@ export const viewport: Viewport = {
   viewportFit: "cover",   // iOS notch support
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+  const isLoggedIn = !!session?.user;
+
   return (
     <html lang="en" data-scroll-behavior="smooth">
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased min-h-screen flex flex-col bg-background text-foreground`}
       >
-        <Navbar />
+        <Navbar isLoggedIn={isLoggedIn} />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />
       </body>

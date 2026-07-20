@@ -22,7 +22,7 @@ const NAV_LINKS = [
   { name: "Contact",    href: "/contact" },
 ];
 
-export function Navbar() {
+export function Navbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
   const pathname = usePathname();
@@ -76,12 +76,21 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3 shrink-0">
-          <Link href="/login" className={cn(
-            "text-[13px] font-medium transition-colors",
-            !useLightText ? "text-[#6B6B6B] hover:text-[#0D0D0D]" : "text-white/70 hover:text-white"
-          )}>
-            Sign in
-          </Link>
+          {isLoggedIn ? (
+            <Link href="/profile" className={cn(
+              "text-[13px] font-medium transition-colors",
+              !useLightText ? "text-[#6B6B6B] hover:text-[#0D0D0D]" : "text-white/70 hover:text-white"
+            )}>
+              Profile
+            </Link>
+          ) : (
+            <Link href="/login" className={cn(
+              "text-[13px] font-medium transition-colors",
+              !useLightText ? "text-[#6B6B6B] hover:text-[#0D0D0D]" : "text-white/70 hover:text-white"
+            )}>
+              Sign in
+            </Link>
+          )}
           <Button
             className="h-9 px-4 rounded-lg text-white text-[13px] font-semibold shadow-none transition-colors"
             style={{ backgroundColor: R }}
@@ -149,11 +158,11 @@ export function Navbar() {
                   Join JKKNIU-SDC
                 </Button>
                 <Link
-                  href="/login"
+                  href={isLoggedIn ? "/profile" : "/login"}
                   onClick={() => setOpen(false)}
                   className="flex items-center justify-center text-[13px] text-[#6B6B6B] hover:text-[#0D0D0D] py-3 mt-1 touch-target transition-colors"
                 >
-                  Sign in to your account
+                  {isLoggedIn ? "Manage Profile" : "Sign in to your account"}
                 </Link>
               </div>
             </div>

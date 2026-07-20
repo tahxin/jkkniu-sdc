@@ -1,11 +1,24 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import { Eye, EyeOff, ArrowLeft } from "lucide-react";
+import { loginAction } from "./actions";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isPending, setIsPending] = useState(false);
+
+  async function handleSubmit(formData: FormData) {
+    setIsPending(true);
+    setError(null);
+    const result = await loginAction(formData);
+    if (result?.error) {
+      setError(result.error);
+      setIsPending(false);
+    }
+  }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-secondary/30 pt-16 pb-12">
@@ -46,9 +59,14 @@ export default function LoginPage() {
 
           {/* Form */}
           <form
-            onSubmit={(e) => e.preventDefault()}
+            action={handleSubmit}
             className="flex flex-col gap-5"
           >
+            {error && (
+              <div className="p-3 rounded-xl bg-red-50 text-red-600 text-sm font-medium">
+                {error}
+              </div>
+            )}
             {/* Email Field */}
             <div className="flex flex-col gap-1.5">
               <label
@@ -59,8 +77,10 @@ export default function LoginPage() {
               </label>
               <input
                 id="email"
+                name="email"
                 type="email"
                 autoComplete="email"
+                required
                 placeholder="you@example.com"
                 className="border border-input rounded-xl h-12 px-4 w-full text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all placeholder:text-muted-foreground/60"
               />
@@ -77,8 +97,10 @@ export default function LoginPage() {
               <div className="relative">
                 <input
                   id="password"
+                  name="password"
                   type={showPassword ? "text" : "password"}
                   autoComplete="current-password"
+                  required
                   placeholder="••••••••"
                   className="border border-input rounded-xl h-12 px-4 pr-12 w-full text-sm focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all placeholder:text-muted-foreground/60"
                 />
@@ -110,9 +132,10 @@ export default function LoginPage() {
             {/* Sign In Button */}
             <button
               type="submit"
-              className="w-full h-12 bg-primary text-white rounded-2xl font-semibold text-sm hover:bg-primary/90 active:scale-[0.98] transition-all mt-1 shadow-sm shadow-primary/20"
+              disabled={isPending}
+              className="w-full h-12 bg-primary text-white rounded-2xl font-semibold text-sm hover:bg-primary/90 active:scale-[0.98] transition-all mt-1 shadow-sm shadow-primary/20 disabled:opacity-50"
             >
-              Sign in
+              {isPending ? "Signing in..." : "Sign in"}
             </button>
           </form>
 
