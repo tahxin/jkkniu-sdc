@@ -19,7 +19,7 @@ const CONNECT = [
 const SOCIALS = [
   {
     label: "Facebook",
-    href: "#",
+    href: "https://www.facebook.com/sdc.jkkniu/",
     path: "M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z",
   },
   {
@@ -49,7 +49,7 @@ export function Footer() {
               <span className="font-bold text-[15px] tracking-tight">JKKNIU-SDC</span>
             </Link>
             <p className="text-[13px] text-[#737373] leading-[1.7] max-w-xs mb-6">
-              Empowering students at Jatiya Kabi Kazi Nazrul Islam University through innovation, leadership, and industry collaboration since 2010.
+              Empowering students at Jatiya Kabi Kazi Nazrul Islam University through innovation, leadership, and industry collaboration since 2018.
             </p>
             <div className="flex gap-2">
               {SOCIALS.map(({ label, href, path }) => (
@@ -102,12 +102,12 @@ export function Footer() {
               <li className="flex items-start gap-2.5">
                 <MapPin className="h-4 w-4 shrink-0 mt-0.5" style={{ color: '#C8001E' }} />
                 <span className="text-[13px] text-[#737373] leading-[1.6]">
-                  Jatiya Kabi Kazi Nazrul Islam University,<br />Trishal, Mymensingh-2220, Bangladesh
+                  Jatiya Kabi Kazi Nazrul Islam University Campus,<br />Trishal, Mymensingh
                 </span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 shrink-0" style={{ color: '#C8001E' }} />
-                <span className="text-[13px] text-[#737373]">contact@jkkniu-sdc.org</span>
+                <span className="text-[13px] text-[#737373]">jkkniusdc@gmail.com</span>
               </li>
             </ul>
           </div>

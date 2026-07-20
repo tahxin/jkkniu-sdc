@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { Download, Target, Eye, Shield } from "lucide-react";
+import { Download, Target, Eye, Shield, Users } from "lucide-react";
 import Link from "next/link";
 
 export default function AboutPage() {
@@ -27,10 +27,10 @@ export default function AboutPage() {
                 <h2 className="text-3xl font-bold mb-6">Our History</h2>
                 <div className="prose prose-lg dark:prose-invert">
                   <p>
-                    Founded in 2010, the University Club was established with a singular vision: to bridge the gap between academic theory and real-world application. What started as a small group of passionate students has grown into the university's premier student organization.
+                    Established on March 13, 2018, the Jatiya Kabi Kazi Nazrul Islam University Skill Development Club (JKKNIU-SDC) was founded with a singular vision: to bridge the gap between academic theory and real-world corporate expectations.
                   </p>
                   <p>
-                    Over the years, we have hosted hundreds of events, ranging from national summits and inter-university competitions to intimate workshops and career fairs. Our alumni network spans the globe, with former members now leading major corporations and pioneering innovative startups.
+                    What started as a small group of passionate students has grown into a nationwide skill development movement. The club organizes workshops, inter-university competitions, seminars, and national-level events to transform students into expert, adept human resources capable of contributing their excellence anywhere in the world.
                   </p>
                 </div>
               </div>
@@ -43,7 +43,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-3">Our Mission</h3>
                   <p className="text-muted-foreground">
-                    To empower students by providing a platform for skill development, leadership opportunities, and industry connections, fostering an environment where innovation thrives.
+                    To make students aware of how to become a valuable resource and to provide them with specialized programs for skill development. The ultimate objective is to produce adept and expert human resources.
                   </p>
                 </div>
                 <div>
@@ -52,7 +52,7 @@ export default function AboutPage() {
                   </div>
                   <h3 className="text-xl font-bold mb-3">Our Vision</h3>
                   <p className="text-muted-foreground">
-                    To be the leading student organization globally recognized for producing industry-ready professionals and visionary leaders who make a positive impact on society.
+                    To ignite a widespread skill development movement that begins at JKKNIU and expands across the entire country. The organization envisions transforming the younger generation into expert human resources dedicated to contributing to the nation's development.
                   </p>
                 </div>
               </div>
@@ -70,41 +70,54 @@ export default function AboutPage() {
               </div>
             </div>
 
-            {/* Sidebar / Advisory Panel */}
+            {/* Sidebar / Leadership */}
             <div className="space-y-8">
               <div className="bg-secondary/20 rounded-2xl p-6 border border-border/50">
                 <h3 className="font-bold text-lg mb-6 flex items-center gap-2">
                   <Shield className="h-5 w-5 text-primary" />
-                  Faculty Advisor
+                  Historical Leadership
                 </h3>
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="h-16 w-16 rounded-full bg-muted flex items-center justify-center text-xs text-muted-foreground shrink-0">
-                    [Photo]
+                  <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center text-xs text-muted-foreground shrink-0 overflow-hidden">
+                    <Users className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Dr. Sarah Jenkins</h4>
-                    <p className="text-sm text-muted-foreground">Professor, Computer Science</p>
+                    <h4 className="font-semibold">Ibnul Haider Nakib</h4>
+                    <p className="text-sm text-muted-foreground">Founding President</p>
                   </div>
                 </div>
-                <p className="text-sm text-muted-foreground italic">
-                  "The University Club represents the very best of our student body—driven, innovative, and deeply committed to excellence."
-                </p>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center text-xs text-muted-foreground shrink-0 overflow-hidden">
+                    <Users className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Sohel Sadman Islam</h4>
+                    <p className="text-sm text-muted-foreground">President (Job Fair 2023)</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center text-xs text-muted-foreground shrink-0 overflow-hidden">
+                    <Users className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="font-semibold">Lutful Nasif</h4>
+                    <p className="text-sm text-muted-foreground">Secretary (Job Fair 2023)</p>
+                  </div>
+                </div>
               </div>
 
               <div className="bg-secondary/20 rounded-2xl p-6 border border-border/50">
-                <h3 className="font-bold text-lg mb-6">Advisory Panel</h3>
+                <h3 className="font-bold text-lg mb-6">Alumni & Success Stories</h3>
                 <div className="space-y-6">
-                  {[1, 2, 3].map((item) => (
-                    <div key={item} className="flex items-center gap-4">
-                      <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center text-xs text-muted-foreground shrink-0">
-                        [Photo]
-                      </div>
-                      <div>
-                        <h4 className="font-semibold text-sm">John Doe {item}</h4>
-                        <p className="text-xs text-muted-foreground">Industry Expert</p>
-                      </div>
+                  <div className="flex items-center gap-4">
+                    <div className="h-12 w-12 rounded-full bg-muted flex items-center justify-center text-xs text-muted-foreground shrink-0 overflow-hidden">
+                      <Users className="h-5 w-5" />
                     </div>
-                  ))}
+                    <div>
+                      <h4 className="font-semibold text-sm">Farjana Akter Rakhi</h4>
+                      <p className="text-xs text-muted-foreground">Successful Corporate Career</p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

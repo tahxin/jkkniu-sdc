@@ -1,4 +1,4 @@
-﻿import { MapPin, Mail, Phone, Clock } from "lucide-react";
+import { MapPin, Mail, Phone, Clock } from "lucide-react";
 
 export default function ContactPage() {
   const contactInfo = [
@@ -11,12 +11,12 @@ export default function ContactPage() {
     {
       icon: <Mail className="h-5 w-5 text-primary" />,
       label: "Email",
-      value: "contact@jkkniu-sdc.org",
+      value: "jkkniusdc@gmail.com",
     },
     {
       icon: <Phone className="h-5 w-5 text-primary" />,
       label: "Phone",
-      value: "+880 1XXX-XXXXXX",
+      value: "01792485527",
     },
     {
       icon: <Clock className="h-5 w-5 text-primary" />,
@@ -163,7 +163,7 @@ export default function ContactPage() {
                 <div className="flex gap-3">
                   {/* Facebook */}
                   <a
-                    href="https://facebook.com"
+                    href="https://www.facebook.com/sdc.jkkniu/"
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Facebook"

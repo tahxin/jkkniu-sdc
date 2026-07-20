@@ -13,44 +13,38 @@ const STATS = [
 ];
 
 const FEATURES = [
-  { icon: Zap, title: "Workshops & Seminars", desc: "Regular sessions covering professional development, bridging academic learning and industry needs." },
-  { icon: Globe, title: "Job Fairs", desc: "Connecting students with a diverse range of leading companies and industries for networking and career advancement." },
-  { icon: TrendingUp, title: "Competitions", desc: "Hosting academic and professional competitions like 'Freshers' Choice' and 'BizCase'." },
-  { icon: BookOpen, title: "Skill Development", desc: "Fostering a 'skill development movement' to produce future-ready, competitive graduates." },
-  { icon: Users, title: "Leadership & Teamwork", desc: "Opportunities for students to take on executive roles and actively participate in club operations." },
-  { icon: Calendar, title: "Networking Events", desc: "Building a strong community of alumni, current students, and corporate partners." },
+  { icon: Zap, title: "Communication & Public Speaking", desc: "Master the art of articulating ideas and speaking confidently in front of any audience." },
+  { icon: Users, title: "Leadership & Team Management", desc: "Gain hands-on experience by taking on executive roles and managing dynamic teams." },
+  { icon: Globe, title: "Corporate Networking", desc: "Build meaningful connections with industry leaders, alumni, and top MNCs across Bangladesh." },
+  { icon: TrendingUp, title: "Problem Solving & Decision Making", desc: "Tackle real-world business cases and sharpen your analytical and strategic thinking." },
+  { icon: BookOpen, title: "Hard Skills Development", desc: "Acquire essential technical skills, from Microsoft Office proficiency to modern design tools." },
+  { icon: Calendar, title: "Career Pipelines", desc: "Direct access to exclusive job fairs and recruitment opportunities from our corporate partners." },
 ];
 
 const EVENTS = [
   {
     status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
-    date: "TBA", category: "Job Fair",
-    title: "Campus Job Fair",
-    desc: "Connect with leading companies and explore career opportunities right on campus.",
-  },
-  {
-    status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
-    date: "TBA", category: "Talk Show",
-    title: "Let's Talk",
-    desc: "An interactive session where industry experts share insights, discuss career journeys, and answer student queries.",
-  },
-  {
-    status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
     date: "TBA", category: "Competition",
-    title: "Freshers' Choice Public Speaking",
-    desc: "Our signature public speaking competition for new students to showcase their communication skills.",
+    title: "BizCase 2025",
+    desc: "Our flagship business case competition with a massive 1 Lakh BDT prize pool, challenging students to solve real-world corporate problems. Supported by SR Dream IT, US-Bangla, and TBS.",
+  },
+  {
+    status: "Past", statusColor: "#6B6B6B", statusBg: "#F7F7F5",
+    date: "July 30, 2023", category: "Job Fair",
+    title: "JKKNIU Job Fair 2023",
+    desc: "A massive networking and recruitment event bridging talented individuals in the Mymensingh region with leading startups, MNCs, and non-profits, in association with Excellence Bangladesh.",
   },
   {
     status: "Past", statusColor: "#6B6B6B", statusBg: "#F7F7F5",
     date: "Past Event", category: "Competition",
-    title: "BizCase Competition",
-    desc: "A business case-solving challenge testing analytical and problem-solving abilities.",
+    title: "BizCase 2020",
+    desc: "A massive success drawing over 370 teams from more than 65 universities across the country to showcase their analytical abilities.",
   },
   {
-    status: "Past", statusColor: "#6B6B6B", statusBg: "#F7F7F5",
-    date: "Past Event", category: "Recruitment",
-    title: "Leaders Hunting",
-    desc: "A flagship recruitment and leadership assessment program to find the next generation of club executives.",
+    status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
+    date: "July 24, 2025", category: "Competition",
+    title: "CV Writing Competition 4.0",
+    desc: "Registration is Open Now! Enhance your professional profile and stand out to top recruiters in our premier CV writing challenge.",
   },
 ];
 
@@ -88,7 +82,7 @@ export default function Home() {
           </h1>
 
           <p className="text-[1.1rem] leading-[1.75] text-white/55 max-w-xl mb-12">
-            Established in 2018, JKKNIU-SDC fosters a skill development movement, empowering students to bridge the gap between academic learning and professional requirements. We have proudly worked with all major MNC and corporate companies of Bangladesh.
+            Established on March 13, 2018, at Jatiya Kabi Kazi Nazrul Islam University. Our core focus is transforming students into expert, adept human resources capable of contributing their excellence anywhere in the world.
           </p>
 
           {/* CTAs */}
@@ -241,18 +235,28 @@ export default function Home() {
           PARTNER STRIP
           ══════════════════════════ */}
       <section className="px-5 md:px-8 py-16 bg-white border-t border-[#E8E8E8]">
-        <div className="container mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-8">
-          <div>
-            <p className="section-label mb-2">Corporate Network</p>
+        <div className="container mx-auto max-w-5xl flex flex-col items-center gap-8">
+          <div className="text-center">
+            <p className="section-label mb-2 mx-auto justify-center">Corporate Network</p>
             <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-              Trusted by Top Companies.
+              Trusted by Top Organizations.
             </h2>
-            <p className="text-[14px] text-[#6B6B6B] mt-2 max-w-lg">
-              We have worked with all major MNC and corporate companies of Bangladesh. Partner with JKKNIU-SDC to access exceptional student talent.
+            <p className="text-[14px] text-[#6B6B6B] mt-2 max-w-2xl mx-auto">
+              We have proudly collaborated and signed MoUs with major MNCs and corporate companies to pave the way for youth skill development, research, and innovation.
             </p>
           </div>
+          
+          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-4 opacity-60 grayscale hover:grayscale-0 transition-all">
+            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">AKIJ Resource</span>
+            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">Rise Above All</span>
+            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">AKIJ iBOS</span>
+            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">Excellence Bangladesh</span>
+            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">The Business Standard</span>
+            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">US-Bangla Airlines</span>
+          </div>
+
           <Button
-            className="shrink-0 h-11 px-6 rounded-xl text-white font-semibold touch-target"
+            className="mt-4 h-11 px-6 rounded-xl text-white font-semibold touch-target"
             style={{ backgroundColor: BK }}
             render={<Link href="/partners" />}
           >
