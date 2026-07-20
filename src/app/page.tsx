@@ -2,23 +2,23 @@ import Link from "next/link";
 import { ArrowRight, Users, Calendar, Zap, Globe, BookOpen, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const R  = "#C8001E";
+const R = "#C8001E";
 const BK = "#0D0D0D";
 
 const STATS = [
-  { n: "500+",   label: "Active members" },
-  { n: "100+",   label: "Events hosted"  },
-  { n: "2018",   label: "Year Established"},
+  { n: "500+", label: "Active members" },
+  { n: "100+", label: "Events hosted" },
+  { n: "2018", label: "Year Established" },
   { n: "Job Fairs", label: "Career pipelines" },
 ];
 
 const FEATURES = [
-  { icon: Zap,        title: "Workshops & Seminars",  desc: "Regular sessions covering professional development, bridging academic learning and industry needs." },
-  { icon: Globe,      title: "Job Fairs",               desc: "Connecting students with a diverse range of leading companies and industries for networking and career advancement." },
-  { icon: TrendingUp, title: "Competitions",            desc: "Hosting academic and professional competitions like 'Freshers' Choice' and 'BizCase'." },
-  { icon: BookOpen,   title: "Skill Development",       desc: "Fostering a 'skill development movement' to produce future-ready, competitive graduates." },
-  { icon: Users,      title: "Leadership & Teamwork",   desc: "Opportunities for students to take on executive roles and actively participate in club operations." },
-  { icon: Calendar,   title: "Networking Events",       desc: "Building a strong community of alumni, current students, and corporate partners." },
+  { icon: Zap, title: "Workshops & Seminars", desc: "Regular sessions covering professional development, bridging academic learning and industry needs." },
+  { icon: Globe, title: "Job Fairs", desc: "Connecting students with a diverse range of leading companies and industries for networking and career advancement." },
+  { icon: TrendingUp, title: "Competitions", desc: "Hosting academic and professional competitions like 'Freshers' Choice' and 'BizCase'." },
+  { icon: BookOpen, title: "Skill Development", desc: "Fostering a 'skill development movement' to produce future-ready, competitive graduates." },
+  { icon: Users, title: "Leadership & Teamwork", desc: "Opportunities for students to take on executive roles and actively participate in club operations." },
+  { icon: Calendar, title: "Networking Events", desc: "Building a strong community of alumni, current students, and corporate partners." },
 ];
 
 const EVENTS = [
@@ -75,22 +75,16 @@ export default function Home() {
             <div className="flex items-center gap-3">
               <span className="h-[3px] w-8 rounded-full" style={{ backgroundColor: R }} />
               <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-white/50">
-                Jatiya Kabi Kazi Nazrul Islam University Skill Development Club
+                Jatiya Kabi Kazi Nazrul Islam University-Skill Development Club
               </span>
             </div>
           </div>
 
           {/* Massive headline */}
           <h1 className="text-[clamp(3rem,9vw,6rem)] font-bold tracking-[-0.03em] leading-[1.02] text-white mb-8 max-w-4xl">
-            Where students{" "}
-            <span style={{ color: R }}>become</span>{" "}
-            <span className="relative inline-block text-white">
-              experts.
-              <span
-                className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full"
-                style={{ backgroundColor: R, opacity: 0.8 }}
-              />
-            </span>
+            Time to{" "}
+            <br />
+            <span style={{ color: R }}>Move</span>{" "}
           </h1>
 
           <p className="text-[1.1rem] leading-[1.75] text-white/55 max-w-xl mb-12">

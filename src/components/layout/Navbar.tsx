@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
@@ -24,17 +25,23 @@ const NAV_LINKS = [
 export function Navbar() {
   const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
+  const pathname = usePathname();
 
   React.useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", fn, { passive: true });
+    fn();
     return () => window.removeEventListener("scroll", fn);
   }, []);
+
+  const isHome = pathname === "/";
+  const useLightText = isHome && !scrolled;
+  const useSolidBg = !isHome || scrolled;
 
   return (
     <header className={cn(
       "fixed inset-x-0 top-0 z-50 transition-all duration-200",
-      scrolled ? "bg-white/96 backdrop-blur-sm border-b border-[#E8E8E8] shadow-sm" : "bg-transparent"
+      useSolidBg ? "bg-white/96 backdrop-blur-sm border-b border-[#E8E8E8] shadow-sm" : "bg-transparent"
     )}>
       <nav className="container mx-auto max-w-5xl flex h-16 items-center justify-between px-5 md:px-8">
 
@@ -43,7 +50,7 @@ export function Navbar() {
           <div className="flex items-center justify-center h-9 w-9 bg-white p-1 rounded-md shadow-sm border border-[#E8E8E8]">
             <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU-SDC Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="font-bold text-[15px] tracking-tight transition-colors" style={{ color: scrolled ? BK : "white" }}>
+          <span className="font-bold text-[15px] tracking-tight transition-colors" style={{ color: useLightText ? "white" : BK }}>
             JKKNIU<span style={{ color: R }}>-SDC</span>
           </span>
         </Link>
@@ -56,7 +63,7 @@ export function Navbar() {
                 href={l.href}
                 className={cn(
                   "px-3 py-2 text-[13px] font-medium rounded-md transition-colors",
-                  scrolled 
+                  !useLightText 
                     ? "text-[#6B6B6B] hover:text-[#0D0D0D] hover:bg-[#F7F7F5]" 
                     : "text-white/70 hover:text-white hover:bg-white/10"
                 )}
@@ -71,7 +78,7 @@ export function Navbar() {
         <div className="hidden lg:flex items-center gap-3 shrink-0">
           <Link href="/login" className={cn(
             "text-[13px] font-medium transition-colors",
-            scrolled ? "text-[#6B6B6B] hover:text-[#0D0D0D]" : "text-white/70 hover:text-white"
+            !useLightText ? "text-[#6B6B6B] hover:text-[#0D0D0D]" : "text-white/70 hover:text-white"
           )}>
             Sign in
           </Link>
@@ -93,7 +100,7 @@ export function Navbar() {
                 size="icon"
                 className={cn(
                   "flex lg:hidden h-9 w-9 rounded-lg transition-colors",
-                  scrolled 
+                  !useLightText 
                     ? "hover:bg-[#F7F7F5] text-[#0D0D0D]" 
                     : "hover:bg-white/10 text-white"
                 )}
