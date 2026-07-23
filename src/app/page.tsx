@@ -23,9 +23,9 @@ const FEATURES = [
 
 const EVENTS = [
   {
-    status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
+    status: "Past", statusColor: "#6B6B6B", statusBg: "#F7F7F5 ",
     date: "TBA", category: "Competition",
-    title: "BizCase 2025",
+    title: "BizCase 2026",
     desc: "Our flagship business case competition with a massive 1 Lakh BDT prize pool, challenging students to solve real-world corporate problems. Supported by SR Dream IT, US-Bangla, and TBS.",
   },
   {
@@ -67,7 +67,7 @@ export default function Home() {
               <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU SDC Logo" className="w-full h-full object-contain" />
             </div>
             <div className="flex items-center gap-3">
-              <span className="h-[3px] w-8 rounded-full" style={{ backgroundColor: R }} />
+              <span className="h-0.75 w-8 rounded-full" style={{ backgroundColor: R }} />
               <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-white/50">
                 Jatiya Kabi Kazi Nazrul Islam University-Skill Development Club
               </span>
@@ -220,7 +220,7 @@ export default function Home() {
                   >
                     {ev.title}
                   </h3>
-                  <p className="text-[13px] text-[#6B6B6B] leading-[1.5] line-clamp-2">{ev.desc}</p>
+                  <p className="text-[13px] text-[#6B6B6B] leading-normal line-clamp-2">{ev.desc}</p>
                 </div>
                 <ArrowRight
                   className="h-4 w-4 shrink-0 mt-1 transition-colors text-[#CACACA] group-hover:text-[#C8001E]"
