@@ -100,8 +100,8 @@ export default function AboutPage() {
                     <Users className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="font-semibold">Lutful Nasif</h4>
-                    <p className="text-sm text-muted-foreground">Secretary (Job Fair 2023)</p>
+                    <h4 className="font-semibold">Md. Abdul Awaul</h4>
+                    <p className="text-sm text-muted-foreground">President (Bizcase 2025)</p>
                   </div>
                 </div>
               </div>
