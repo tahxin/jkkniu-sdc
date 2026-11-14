@@ -1,0 +1,64 @@
+<!doctype html><html><head><meta charset="utf-8"><style>
+*{margin:0;box-sizing:border-box}body{width:1440px;height:900px;overflow:hidden;background:#F4EFE3;font-family:Arial,Helvetica,sans-serif;color:#101010}
+/* wayfinding rail */
+.rail{display:flex;align-items:center;gap:28px;height:64px;padding:0 40px;border-bottom:3px solid #101010;background:#F4EFE3}
+.badge{width:38px;height:38px;border-radius:9px;background:#fff;border:2px solid #101010;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px;color:#0F5132}
+.wm{font-weight:900;font-size:19px;letter-spacing:-.5px}
+.wm em{font-style:normal;color:#D63324}
+.links{display:flex;gap:22px;margin-left:26px;font-size:13px;font-weight:700;letter-spacing:.08em;color:#3E3A32}
+.links span{position:relative;padding-left:14px}
+.links span:before{content:"";position:absolute;left:0;top:50%;width:6px;height:6px;border-radius:1px;background:#101010;transform:translateY(-50%) rotate(45deg);opacity:.25}
+.join{margin-left:auto;background:#D63324;color:#fff;font-weight:900;font-size:13px;letter-spacing:.1em;padding:12px 22px;border-radius:3px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 100%,0 100%)}
+/* main stage */
+.stage{position:relative;display:grid;grid-template-columns:1fr 380px;height:700px;background:#0F5132;color:#F4EFE3}
+.stage-l{padding:56px 56px 0 64px;border-right:3px solid #101010;position:relative}
+.stage-l:after{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(244,239,227,.05) 0 2px,transparent 2px 120px)}
+.tag{display:inline-block;background:#F4EFE3;color:#101010;font-weight:900;font-size:14px;letter-spacing:.22em;padding:8px 14px;border-radius:2px;margin-bottom:26px}
+.h1{font-family:"Arial Narrow",Impact,sans-serif;font-stretch:condensed;font-size:118px;line-height:.94;letter-spacing:-.01em;font-weight:900}
+.h1 .r{color:#F4EFE3}.h1 .y{color:#F2C230}
+.sub{margin-top:22px;font-size:16px;line-height:1.6;color:rgba(244,239,227,.8);max-width:520px}
+.stubs{margin-top:34px;display:flex;gap:16px}
+.stub{font-weight:900;font-size:15px;letter-spacing:.06em;padding:18px 30px;position:relative;background:#D63324;color:#fff}
+.stub:before,.stub:after{content:"";position:absolute;top:0;width:10px;height:100%;background:radial-gradient(circle at 50% 8px,transparent 5px,#0F5132 5px)}
+.stub:before{left:-5px}.stub:after{right:-5px;background:radial-gradient(circle at 50% 8px,transparent 5px,#0F5132 5px)}
+.stub.o{background:transparent;color:#F4EFE3;outline:2px solid rgba(244,239,227,.7);outline-offset:-2px}
+.stub.o:before,.stub.o:after{display:none}
+/* counter board */
+.board{background:#101010;color:#F4EFE3;padding:40px 36px;display:flex;flex-direction:column;gap:26px}
+.bl{font-size:12px;font-weight:900;letter-spacing:.25em;color:#F2C230;border-bottom:2px solid #2A2A2A;padding-bottom:10px}
+.stat b{display:block;font-family:"Arial Narrow",Impact,sans-serif;font-size:64px;line-height:1;color:#F4EFE3}
+.stat i{font-style:normal;font-size:12px;letter-spacing:.14em;color:#9A948A;display:block;margin-top:6px}
+/* booth strip */
+.booth{height:136px;border-top:3px solid #101010;background:#F4EFE3;display:flex;align-items:center;padding:0 40px;gap:0}
+.bcard{flex:1;border-right:1px dashed #B9B2A4;padding:0 30px}
+.bcard:last-child{border-right:none}
+.bk{font-size:11px;font-weight:900;letter-spacing:.2em;color:#8A8478;margin-bottom:8px}
+.bn{font-family:"Arial Narrow",Impact,sans-serif;font-size:22px;font-weight:900;letter-spacing:.02em}
+</style></head><body>
+<div class="rail">
+  <div class="badge">SDC</div><div class="wm">JKKNIU<em>-SDC</em></div>
+  <div class="links"><span>ABOUT</span><span>COMMITTEE</span><span>EVENTS</span><span>PARTNERS</span><span>MEMBERSHIP</span><span>GALLERY</span><span>BLOG</span><span>CONTACT</span></div>
+  <div class="join">JOIN NOW</div>
+</div>
+<div class="stage">
+  <div class="stage-l">
+    <div class="tag">MAIN STAGE — BIZCASE 2026</div>
+    <div class="h1">TIME TO<br><span class="y">MOVE</span></div>
+    <div class="sub">The Skill Development Club of Jatiya Kabi Kazi Nazrul Islam University. Established March 13, 2018 — transforming students into expert human resources. Flagship case competition with a 1 Lakh BDT prize pool.</div>
+    <div class="stubs"><div class="stub">PARTNER WITH US</div><div class="stub o">APPLY FOR MEMBERSHIP</div></div>
+  </div>
+  <div class="board">
+    <div class="bl">HALL COUNTER</div>
+    <div class="stat"><b>500+</b><i>ACTIVE MEMBERS</i></div>
+    <div class="stat"><b>100+</b><i>EVENTS HOSTED</i></div>
+    <div class="stat"><b>2018</b><i>ESTABLISHED</i></div>
+  </div>
+</div>
+<div class="booth">
+  <div class="bcard"><div class="bk">BOOTH 01</div><div class="bn">AKIJ RESOURCE</div></div>
+  <div class="bcard"><div class="bk">BOOTH 02</div><div class="bn">US-BANGLA AIRLINES</div></div>
+  <div class="bcard"><div class="bk">BOOTH 03</div><div class="bn">THE BUSINESS STANDARD</div></div>
+  <div class="bcard"><div class="bk">BOOTH 04</div><div class="bn">EXCELLENCE BANGLADESH</div></div>
+</div>
+</body></html>
