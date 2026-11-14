@@ -7,7 +7,7 @@ export default function About() {
     <div className="flex flex-col dossier-grid">
       <PageBanner
         title="Our Institution."
-        subtitle="The history, mission, and the people behind JKKNIU's premier skill development platform."
+        intro="The history, mission, and the people behind JKKNIU's premier skill development platform."
       />
 
       {/* ══════════════════════════

@@ -27,31 +27,31 @@ export function Navbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
   const pathname = usePathname();
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 bg-cream border-b-[3px] border-ink">
+    <header className="fixed inset-x-0 top-0 z-50 bg-cream/95 backdrop-blur-sm border-b-[3px] border-ink">
       <nav className="container mx-auto max-w-6xl flex h-16 items-center justify-between px-5 md:px-8">
 
         {/* Wordmark */}
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <div className="flex items-center justify-center h-10 w-10 bg-white p-1.5 rounded-md border-2 border-ink">
+        <Link href="/" className="flex items-center gap-2.5 shrink-0 hover:opacity-80 transition-opacity">
+          <div className="flex items-center justify-center h-10 w-10 bg-white p-1 rounded-sm border-2 border-ink">
             <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU-SDC Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="display-caps text-[19px] tracking-[0.02em]">
-            JKKNIU<span className="text-stamp">-SDC</span>
+          <span className="display-caps text-[18px] tracking-tight">
+            JKKNIU<span className="text-hall">-SDC</span>
           </span>
         </Link>
 
         {/* Desktop links — wayfinding with diamond markers */}
         <ul className="hidden lg:flex items-center gap-1">
           {NAV_LINKS.map((l) => {
-            const active = pathname.startsWith(l.href);
+            const active = pathname === l.href;
             return (
               <li key={l.name}>
                 <Link
                   href={l.href}
                   aria-current={active ? "page" : undefined}
                   className={cn(
-                    "marker-diamond px-3 py-2 text-[12px] font-bold uppercase tracking-[0.1em] transition-colors touch-target",
-                    active ? "text-stamp" : "text-ink/60 hover:text-ink"
+                    "marker-diamond px-3 py-2 text-[11px] font-bold uppercase tracking-[0.15em] transition-colors touch-target",
+                    active ? "text-hall" : "text-ink/70 hover:text-hall"
                   )}
                 >
                   {l.name}
@@ -62,19 +62,18 @@ export function Navbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
         </ul>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-4 shrink-0">
+        <div className="hidden lg:flex items-center gap-6 shrink-0">
           <Link
             href={isLoggedIn ? "/profile" : "/login"}
-            className="text-[12px] font-bold uppercase tracking-[0.1em] text-ink/60 hover:text-ink transition-colors"
+            className="text-[11px] font-bold uppercase tracking-[0.15em] text-ink/70 hover:text-hall transition-colors"
           >
             {isLoggedIn ? "Profile" : "Sign in"}
           </Link>
           <Link
-            href="/membership"
-            className="stub inline-flex items-center bg-stamp text-white text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 hover:brightness-110 transition-[filter]"
-            style={{ ["--notch" as string]: "var(--cream)" }}
+            href="/partners"
+            className="inline-flex items-center justify-center bg-stamp text-white text-[11px] font-bold uppercase tracking-[0.15em] px-6 py-2.5 hover:bg-hall transition-colors shadow-[4px_4px_0_0_#101010] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none"
           >
-            Join now
+            Partner Inquire
           </Link>
         </div>
 

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Globe, Users, TrendingUp, Award } from "lucide-react";
+import { ArrowRight, Globe } from "lucide-react";
 import { Ticket } from "@/components/world/Ticket";
 import { CounterBoard } from "@/components/world/CounterBoard";
 
@@ -109,9 +109,9 @@ export default function Home() {
           ══════════════════════════ */}
       <section className="bg-cream border-b-[3px] border-ink">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 divide-x-2 divide-paper-line border-ink">
-          {BOOTHS.map((partner, i) => (
+          {BOOTHS.map((partner, index) => (
             <div key={partner.name} className="p-6 md:p-8 hover:bg-white transition-all group cursor-default">
-              <p className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase mb-3">0{i+1} Alliance</p>
+              <p className="text-[10px] font-bold text-muted-foreground tracking-widest uppercase mb-3">0{index+1} Alliance</p>
               <p className="font-bold text-[14px] leading-tight mb-1 group-hover:text-hall transition-colors">{partner.name}</p>
               <p className="text-[11px] text-muted-foreground/70 uppercase font-semibold">{partner.category}</p>
             </div>
@@ -124,8 +124,8 @@ export default function Home() {
           ══════════════════════════ */}
       <div className="bg-brass border-b-[3px] border-ink py-4 overflow-hidden select-none">
         <div className="marquee-track">
-          {[...Array(4)].map((_, i) => (
-            <div key={i} className="flex items-center">
+          {[...Array(4)].map((_, idx) => (
+            <div key={idx} className="flex items-center">
               {MARQUEE_ITEMS.map((item) => (
                 <div key={item} className="flex items-center px-8">
                   <span className="display-caps text-[18px] text-ink whitespace-nowrap">{item}</span>
@@ -155,9 +155,9 @@ export default function Home() {
             </div>
 
             <div className="grid gap-px bg-paper-line border-2 border-ink">
-              {PROGRAM.map((p, i) => (
+              {PROGRAM.map((p, index) => (
                 <div key={p.title} className="bg-white p-8 md:p-10 group hover:bg-cream transition-colors">
-                  <span className="display-caps text-hall text-[15px] mb-4 block">Section 0{i+1}</span>
+                  <span className="display-caps text-hall text-[15px] mb-4 block">Section 0{index+1}</span>
                   <h3 className="font-bold text-[20px] mb-4 group-hover:translate-x-2 transition-transform">{p.title}</h3>
                   <p className="text-[15px] text-muted-foreground leading-relaxed">{p.desc}</p>
                 </div>
@@ -207,7 +207,7 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-0 border-2 border-ink bg-ink">
-            {MOMENTS.map((m, i) => (
+            {MOMENTS.map((m) => (
               <div key={m.caption} className="relative group overflow-hidden border-ink md:[&:not(:last-child)]:border-r-2">
                 <img src={m.src} alt={m.alt} className="w-full aspect-square object-cover transition-transform duration-700 group-hover:scale-110 group-hover:opacity-40" />
                 <div className="absolute inset-0 flex flex-col justify-end p-8 translate-y-10 group-hover:translate-y-0 transition-transform duration-500">

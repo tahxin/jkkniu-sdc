@@ -41,7 +41,7 @@ export default function Partners() {
     <div className="flex flex-col dossier-grid">
       <PageBanner
         title="Corporate Alliances."
-        subtitle="Bridging the gap between academic potential and corporate excellence."
+        intro="Bridging the gap between academic potential and corporate excellence."
       />
 
       {/* ══════════════════════════
