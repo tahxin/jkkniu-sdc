@@ -75,7 +75,7 @@ export default function PartnersPage() {
 
           {/* BizCase supporters */}
           <div className="mt-10 border-t-2 border-ink pt-8">
-            <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-hall mb-4">
+            <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-event mb-4">
               BizCase 2026 — supported by
             </p>
             <div className="flex flex-wrap gap-x-10 gap-y-3">
@@ -97,7 +97,7 @@ export default function PartnersPage() {
             {BENEFITS.map(({ icon: Icon, title, desc }, i) => (
               <div key={title} className="program-row py-7">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="display-caps text-[15px] text-stamp tabular-nums">
+                  <span className="display-caps text-[15px] text-primary tabular-nums">
                     {String(i + 1).padStart(2, "0")}
                   </span>
                   <Icon className="h-5 w-5 text-hall" />

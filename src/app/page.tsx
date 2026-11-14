@@ -78,19 +78,19 @@ export default function Home() {
         <div className="grid lg:grid-cols-[1fr_340px]">
           {/* Banner */}
           <div
-            className="relative bg-hall text-cream px-5 md:px-14 py-16 md:py-20 lg:min-h-[calc(100vh-13.5rem)] flex flex-col justify-center"
+            className="relative bg-hall text-white px-5 md:px-14 py-16 md:py-20 lg:min-h-[calc(100vh-13.5rem)] flex flex-col justify-center"
             style={{
               backgroundImage:
-                "repeating-linear-gradient(90deg, rgba(244,239,227,0.045) 0 2px, transparent 2px 110px)",
+                "repeating-linear-gradient(90deg, rgba(255,255,255,0.06) 0 2px, transparent 2px 110px)",
             }}
           >
-            <p className="inline-flex w-fit items-center gap-2 bg-cream text-ink text-[11px] font-bold tracking-[0.22em] uppercase px-3 py-2 mb-8">
-              Main stage — BizCase 2026
+            <p className="inline-flex w-fit items-center gap-2 bg-white text-ink text-[11px] font-bold tracking-[0.22em] uppercase px-3.5 py-1.5 mb-8 shadow-sm">
+              Official Student Talent Pipeline
             </p>
-            <h1 className="display-caps text-[clamp(3.8rem,9vw,7.5rem)] max-w-4xl">
+            <h1 className="display-caps text-[clamp(3.8rem,9vw,7.5rem)] max-w-4xl tracking-tight">
               Time to <span className="text-brass">move</span>
             </h1>
-            <p className="mt-7 max-w-xl text-[1.05rem] leading-[1.75] text-cream/75">
+            <p className="mt-7 max-w-xl text-[1.05rem] leading-[1.75] text-white/90 font-medium">
               The Skill Development Club of Jatiya Kabi Kazi Nazrul Islam
               University. Established March 13, 2018 — transforming students
               into expert, adept human resources, ready to contribute their
@@ -286,17 +286,17 @@ export default function Home() {
       {/* ══════════════════════════
           FINAL BANNER — join
           ══════════════════════════ */}
-      <section className="bg-hall text-cream">
+      <section className="bg-hall text-white">
         <div className="container mx-auto max-w-6xl px-5 md:px-8 py-20 md:py-24 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
           <h2 className="display-caps text-4xl md:text-5xl leading-[1.05] max-w-lg">
             Your next opportunity starts here.
           </h2>
           <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-            <Ticket href="/membership" tone="cream" notch="var(--hall)">
-              Apply now
+            <Ticket href="/partners" tone="stamp" notch="var(--hall)">
+              Partner with us
             </Ticket>
-            <Ticket href="/about" tone="outline" notch="var(--hall)">
-              Learn more
+            <Ticket href="/membership" tone="outline" notch="var(--hall)">
+              Apply for membership
             </Ticket>
           </div>
         </div>
