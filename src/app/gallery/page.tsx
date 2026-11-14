@@ -1,142 +1,92 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { PageBanner } from "@/components/world/PageBanner";
+import { Ticket } from "@/components/world/Ticket";
 
-const galleryItems = [
-  { id: 1,  label: "Tech Summit 2026",   year: 2026, gradient: "from-[#31A1DB] to-[#1a6fa3]",  rowSpan: false },
-  { id: 2,  label: "Hackathon 2026",     year: 2026, gradient: "from-sky-400 to-sky-600",       rowSpan: false },
-  { id: 3,  label: "Orientation 2026",   year: 2026, gradient: "from-indigo-400 to-indigo-600", rowSpan: true  },
-  { id: 4,  label: "Workshop 2025",      year: 2025, gradient: "from-cyan-400 to-cyan-600",     rowSpan: false },
-  { id: 5,  label: "Hackathon 2025",     year: 2025, gradient: "from-blue-400 to-blue-600",     rowSpan: false },
-  { id: 6,  label: "Annual Fest 2025",   year: 2025, gradient: "from-sky-500 to-indigo-500",    rowSpan: true  },
-  { id: 7,  label: "Seminar 2025",       year: 2025, gradient: "from-[#31A1DB] to-indigo-500",  rowSpan: false },
-  { id: 8,  label: "Robotics Expo 2024", year: 2024, gradient: "from-indigo-500 to-blue-700",   rowSpan: false },
-  { id: 9,  label: "Code Camp 2024",     year: 2024, gradient: "from-sky-300 to-blue-500",      rowSpan: true  },
-  { id: 10, label: "CTF Challenge 2024", year: 2024, gradient: "from-blue-500 to-cyan-600",     rowSpan: false },
-  { id: 11, label: "Inauguration 2023",  year: 2023, gradient: "from-indigo-300 to-indigo-600", rowSpan: false },
-  { id: 12, label: "Founding Day 2023",  year: 2023, gradient: "from-sky-400 to-indigo-400",    rowSpan: true  },
+/**
+ * Real event photography on file — the five images in /public/images.
+ * No placeholders: only moments the club has actually documented.
+ */
+const WALL = [
+  { src: "/images/cv-writing.jpg", alt: "CV Writing Competition", caption: "CV Writing Competition", note: "Competition", wide: true },
+  { src: "/images/alumni-meetup.jpg", alt: "Alumni Meetup", caption: "Alumni Meetup", note: "Networking" },
+  { src: "/images/mou-signing.jpg", alt: "MoU Signing with a corporate partner", caption: "MoU Signing", note: "Partnership" },
+  { src: "/images/new-year-2026.jpg", alt: "Happy New Year 2026", caption: "New Year 2026", note: "Community" },
+  { src: "/images/recap-2025.jpg", alt: "2025 Recap", caption: "2025 Recap", note: "The year in frames" },
 ];
-
-const years = [2026, 2025, 2024, 2023];
 
 export default function GalleryPage() {
   return (
-    <main className="min-h-screen bg-white">
-      {/* Hero */}
-      <section className="bg-gradient-to-b from-[#EAF5FC] to-white pt-24 pb-14 px-5">
-        <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-primary mb-3">
-            JKKNIU-SDC
-          </p>
-          <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-4">
-            Gallery
-          </h1>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-xl mx-auto">
-            Moments from our events and activities
-          </p>
-        </div>
-      </section>
+    <div className="flex flex-col min-h-screen">
+      <PageBanner
+        title="The hall wall"
+        intro="Every event the club runs leaves a record. Here are the moments from our competitions, meetups, and signings — the wall we hang them on."
+        tone="hall"
+      />
 
-      {/* Year Filter Tabs */}
-      <section className="px-5 pb-8">
-        <div className="container mx-auto max-w-5xl">
-          <div className="flex flex-wrap gap-2 justify-center">
-            <button
-              className="h-11 px-5 rounded-full bg-primary text-white text-sm font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-              aria-pressed="true"
-            >
-              All
-            </button>
-            {years.map((year) => (
-              <button
-                key={year}
-                className="h-11 px-5 rounded-full border border-border bg-white text-gray-700 text-sm font-semibold hover:bg-[#EAF5FC] hover:border-primary hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-                aria-pressed="false"
+      {/* ── The wall — real event photography ── */}
+      <section className="px-5 md:px-8 py-20 md:py-24">
+        <div className="container mx-auto max-w-6xl">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+            {WALL.map(({ src, alt, caption, note, wide }, i) => (
+              <figure
+                key={src}
+                className={`border-2 border-ink bg-card ${wide ? "md:col-span-2" : ""}`}
               >
-                {year}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Masonry Grid */}
-      <section className="px-5 pb-16 md:pb-24">
-        <div className="container mx-auto max-w-5xl">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 auto-rows-auto">
-            {galleryItems.map((item) => (
-              <div
-                key={item.id}
-                className={`group relative rounded-xl overflow-hidden cursor-pointer${item.rowSpan ? " row-span-2" : ""}`}
-              >
-                {/* Colored Placeholder */}
-                <div
-                  className={`bg-gradient-to-br ${item.gradient} w-full${
-                    item.rowSpan
-                      ? " min-h-[200px] h-full aspect-auto"
-                      : " aspect-square"
-                  } flex items-center justify-center relative`}
-                >
-                  {/* Dot pattern */}
-                  <div className="absolute inset-0 opacity-10">
-                    <div
-                      className="w-full h-full"
-                      style={{
-                        backgroundImage:
-                          "radial-gradient(circle, white 1px, transparent 1px)",
-                        backgroundSize: "16px 16px",
-                      }}
-                    />
-                  </div>
-
-                  {/* SDC watermark */}
-                  <span className="text-white/30 font-bold text-2xl sm:text-3xl select-none pointer-events-none">
-                    SDC
-                  </span>
-
-                  {/* Hover Overlay */}
-                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="bg-white/90 rounded-full p-3 shadow-md">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="#31A1DB"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        aria-hidden="true"
-                      >
-                        <circle cx="11" cy="11" r="8" />
-                        <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                        <line x1="11" y1="8" x2="11" y2="14" />
-                        <line x1="8" y1="11" x2="14" y2="11" />
-                      </svg>
-                    </div>
-                  </div>
+                <div className="overflow-hidden">
+                  <img
+                    src={src}
+                    alt={alt}
+                    loading={i === 0 ? "eager" : "lazy"}
+                    className="w-full aspect-[4/3] object-cover hover:scale-[1.03] transition-transform duration-500"
+                  />
                 </div>
-
-                {/* Caption */}
-                <p className="text-xs text-muted-foreground mt-1.5 px-0.5 truncate">
-                  {item.label}
-                </p>
-              </div>
+                <figcaption className="bg-ink text-cream px-4 py-2.5 flex items-center justify-between gap-3">
+                  <span className="text-[11px] font-bold tracking-[0.2em] uppercase">
+                    {caption}
+                  </span>
+                  <span className="text-[10px] font-bold tracking-[0.2em] uppercase text-brass shrink-0 tabular-nums">
+                    Exhibit {String(i + 1).padStart(2, "0")}
+                  </span>
+                </figcaption>
+              </figure>
             ))}
           </div>
 
-          {/* Load More */}
-          <div className="flex justify-center mt-12">
-            <Button
-              variant="outline"
-              className="h-11 px-8 rounded-full border-primary text-primary hover:bg-[#EAF5FC] font-semibold"
-              render={<Link href="/gallery" />}
+          <div className="mt-14 border-t-2 border-ink pt-8 flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <p className="text-[14px] text-muted-foreground leading-[1.7] max-w-[60ch]">
+              New photography is posted on our Facebook page after every event —
+              from hackathon rounds to job fair floors.
+            </p>
+            <Ticket
+              href="https://www.facebook.com/sdc.jkkniu/"
+              external
+              tone="stamp"
+              notch="var(--cream)"
+              className="shrink-0"
             >
-              Load More
-            </Button>
+              See more on Facebook <ArrowRight className="h-4 w-4" />
+            </Ticket>
           </div>
         </div>
       </section>
-    </main>
+
+      {/* ── Feature your moment ── */}
+      <section className="px-5 md:px-8 pb-24">
+        <div className="container mx-auto max-w-6xl border-t border-paper-line pt-10">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <p className="display-caps text-2xl md:text-3xl max-w-lg">
+              Member? Share your shots from the floor.
+            </p>
+            <Link
+              href="/contact"
+              className="group inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.1em] text-stamp hover:gap-3.5 transition-all"
+            >
+              Contact the editorial team <ArrowRight className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+    </div>
   );
 }

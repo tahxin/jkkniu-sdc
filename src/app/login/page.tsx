@@ -24,12 +24,12 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-secondary/30 pt-16 pb-12">
       <div className="flex flex-col items-center w-full">
         {/* Card */}
-        <div className="bg-white rounded-3xl p-8 sm:p-10 shadow-xl border border-border w-full max-w-md mx-4">
+        <div className="bg-card rounded-none p-8 sm:p-10 shadow-xl border-2 border-ink w-full max-w-md mx-4">
           {/* Logo */}
           <div className="flex flex-col items-center mb-6 gap-3">
             <div className="flex items-center gap-3">
-              <div className="h-12 w-12 rounded-xl bg-primary flex items-center justify-center shrink-0">
-                <span className="text-white font-bold text-sm tracking-tight leading-none">
+              <div className="h-12 w-12 rounded-none bg-hall flex items-center justify-center shrink-0">
+                <span className="display-caps text-cream text-sm leading-none">
                   SDC
                 </span>
               </div>
@@ -38,14 +38,14 @@ export default function LoginPage() {
                   JKKNIU-SDC
                 </span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Software Development Club
+                  Skill Development Club
                 </span>
               </div>
             </div>
 
             {/* Title & Subtitle */}
             <div className="text-center mt-2">
-              <h1 className="text-2xl font-bold tracking-tight text-foreground">
+              <h1 className="display-caps text-2xl tracking-tight text-foreground">
                 Welcome back
               </h1>
               <p className="text-muted-foreground text-sm mt-1">
@@ -133,9 +133,10 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isPending}
-              className="w-full h-12 bg-primary text-white rounded-2xl font-semibold text-sm hover:bg-primary/90 active:scale-[0.98] transition-all mt-1 shadow-sm shadow-primary/20 disabled:opacity-50"
+              className="stub w-full inline-flex touch-target items-center justify-center bg-stamp text-white text-[14px] font-bold uppercase tracking-[0.08em] px-6 py-3 hover:brightness-110 transition-[filter] disabled:opacity-50"
+              style={{ ["--notch" as string]: "var(--card)" }}
             >
-              {isPending ? "Signing in..." : "Sign in"}
+              {isPending ? "Signing in…" : "Sign in"}
             </button>
           </form>
 

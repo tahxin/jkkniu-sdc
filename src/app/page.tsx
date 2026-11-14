@@ -1,51 +1,68 @@
 import Link from "next/link";
-import { ArrowRight, Users, Calendar, Zap, Globe, BookOpen, TrendingUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
+import { Ticket } from "@/components/world/Ticket";
+import { CounterBoard } from "@/components/world/CounterBoard";
 
-const R = "#C8001E";
-const BK = "#0D0D0D";
-
-const STATS = [
-  { n: "500+", label: "Active members" },
-  { n: "100+", label: "Events hosted" },
-  { n: "2018", label: "Year Established" },
-  { n: "Job Fairs", label: "Career pipelines" },
+const BOOTHS = [
+  "AKIJ Resource",
+  "US-Bangla Airlines",
+  "The Business Standard",
+  "Excellence Bangladesh",
 ];
 
-const FEATURES = [
-  { icon: Zap, title: "Communication & Public Speaking", desc: "Master the art of articulating ideas and speaking confidently in front of any audience." },
-  { icon: Users, title: "Leadership & Team Management", desc: "Gain hands-on experience by taking on executive roles and managing dynamic teams." },
-  { icon: Globe, title: "Corporate Networking", desc: "Build meaningful connections with industry leaders, alumni, and top MNCs across Bangladesh." },
-  { icon: TrendingUp, title: "Problem Solving & Decision Making", desc: "Tackle real-world business cases and sharpen your analytical and strategic thinking." },
-  { icon: BookOpen, title: "Hard Skills Development", desc: "Acquire essential technical skills, from Microsoft Office proficiency to modern design tools." },
-  { icon: Calendar, title: "Career Pipelines", desc: "Direct access to exclusive job fairs and recruitment opportunities from our corporate partners." },
+const MARQUEE_ITEMS = [
+  "BizCase 2026 — 1 Lakh BDT prize pool",
+  "Supported by SR Dream IT · US-Bangla · TBS",
+  "CV Writing Competition 4.0 — registration open",
+  "BizCase 2020 drew 370+ teams from 65+ universities",
+];
+
+const PROGRAM = [
+  { title: "Communication & Public Speaking", desc: "Master the art of articulating ideas and speaking confidently in front of any audience." },
+  { title: "Leadership & Team Management", desc: "Gain hands-on experience by taking on executive roles and managing dynamic teams." },
+  { title: "Corporate Networking", desc: "Build meaningful connections with industry leaders, alumni, and top MNCs across Bangladesh." },
+  { title: "Problem Solving & Decision Making", desc: "Tackle real-world business cases and sharpen your analytical and strategic thinking." },
+  { title: "Hard Skills Development", desc: "Acquire essential technical skills, from Microsoft Office proficiency to modern design tools." },
+  { title: "Career Pipelines", desc: "Direct access to exclusive job fairs and recruitment opportunities from our corporate partners." },
 ];
 
 const EVENTS = [
   {
-    status: "Past", statusColor: "#6B6B6B", statusBg: "#F7F7F5 ",
-    date: "TBA", category: "Competition",
+    status: "Upcoming",
+    date: "July 24, 2025",
+    category: "Competition",
+    title: "CV Writing Competition 4.0",
+    desc: "Registration is open now — enhance your professional profile and stand out to top recruiters in our premier CV writing challenge.",
+  },
+  {
+    status: "Past",
+    date: "TBA",
+    category: "Competition",
     title: "BizCase 2026",
     desc: "Our flagship business case competition with a massive 1 Lakh BDT prize pool, challenging students to solve real-world corporate problems. Supported by SR Dream IT, US-Bangla, and TBS.",
   },
   {
-    status: "Past", statusColor: "#6B6B6B", statusBg: "#F7F7F5",
-    date: "July 30, 2023", category: "Job Fair",
+    status: "Past",
+    date: "July 30, 2023",
+    category: "Job Fair",
     title: "JKKNIU Job Fair 2023",
     desc: "A massive networking and recruitment event bridging talented individuals in the Mymensingh region with leading startups, MNCs, and non-profits, in association with Excellence Bangladesh.",
   },
   {
-    status: "Past", statusColor: "#6B6B6B", statusBg: "#F7F7F5",
-    date: "Past Event", category: "Competition",
+    status: "Past",
+    date: "2020",
+    category: "Competition",
     title: "BizCase 2020",
     desc: "A massive success drawing over 370 teams from more than 65 universities across the country to showcase their analytical abilities.",
   },
-  {
-    status: "Upcoming", statusColor: "#16A34A", statusBg: "#F0FDF4",
-    date: "July 24, 2025", category: "Competition",
-    title: "CV Writing Competition 4.0",
-    desc: "Registration is Open Now! Enhance your professional profile and stand out to top recruiters in our premier CV writing challenge.",
-  },
+];
+
+const MOMENTS = [
+  { src: "/images/cv-writing.jpg", alt: "CV Writing Competition", caption: "CV Writing Competition" },
+  { src: "/images/alumni-meetup.jpg", alt: "Alumni Meetup", caption: "Alumni Meetup" },
+  { src: "/images/mou-signing.jpg", alt: "MoU Signing with a corporate partner", caption: "MoU Signing" },
+  { src: "/images/new-year-2026.jpg", alt: "Happy New Year 2026", caption: "New Year 2026", wide: false },
+  { src: "/images/recap-2025.jpg", alt: "2025 Recap", caption: "2025 Recap", wide: false },
 ];
 
 export default function Home() {
@@ -53,117 +70,111 @@ export default function Home() {
     <div className="flex flex-col">
 
       {/* ══════════════════════════
-          HERO — near-black, bold
+          MAIN STAGE — banner + hall counter
           ══════════════════════════ */}
-      <section
-        className="min-h-screen flex flex-col justify-center px-5 md:px-8 pt-28 pb-24"
-        style={{ backgroundColor: BK }}
-      >
-        <div className="container mx-auto max-w-5xl">
-
-          {/* Logo and Eyebrow */}
-          <div className="flex flex-col gap-6 mb-10">
-            <div className="w-20 h-20 bg-white p-3 rounded-2xl flex items-center justify-center shadow-lg">
-              <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU SDC Logo" className="w-full h-full object-contain" />
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="h-0.75 w-8 rounded-full" style={{ backgroundColor: R }} />
-              <span className="text-[11px] font-bold tracking-[0.22em] uppercase text-white/50">
-                Jatiya Kabi Kazi Nazrul Islam University-Skill Development Club
-              </span>
-            </div>
-          </div>
-
-          {/* Massive headline */}
-          <h1 className="text-[clamp(3rem,9vw,6rem)] font-bold tracking-[-0.03em] leading-[1.02] text-white mb-8 max-w-4xl">
-            Time to{" "}
-            <br />
-            <span style={{ color: R }}>Move</span>{" "}
-          </h1>
-
-          <p className="text-[1.1rem] leading-[1.75] text-white/55 max-w-xl mb-12">
-            Established on March 13, 2018, at Jatiya Kabi Kazi Nazrul Islam University. Our core focus is transforming students into expert, adept human resources capable of contributing their excellence anywhere in the world.
-          </p>
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3">
-            <Button
-              className="h-12 px-7 rounded-xl text-white text-[15px] font-semibold touch-target"
-              style={{ backgroundColor: R }}
-              render={<Link href="/membership" />}
-            >
-              Apply for Membership
-            </Button>
-            <Button
-              variant="ghost"
-              className="h-12 px-7 rounded-xl text-[15px] font-semibold border touch-target"
-              style={{ borderColor: "rgba(255,255,255,0.15)", color: "rgba(255,255,255,0.7)" }}
-              render={<Link href="/events" />}
-            >
-              Browse Events
-            </Button>
-          </div>
-
-          {/* Stats row */}
+      <section className="pt-16 border-b-[3px] border-ink">
+        <div className="grid lg:grid-cols-[1fr_340px]">
+          {/* Banner */}
           <div
-            className="mt-20 pt-10 border-t grid grid-cols-2 md:grid-cols-4 gap-8"
-            style={{ borderColor: "rgba(255,255,255,0.08)" }}
+            className="relative bg-hall text-cream px-5 md:px-14 py-16 md:py-20 lg:min-h-[calc(100vh-13.5rem)] flex flex-col justify-center"
+            style={{
+              backgroundImage:
+                "repeating-linear-gradient(90deg, rgba(244,239,227,0.045) 0 2px, transparent 2px 110px)",
+            }}
           >
-            {STATS.map(({ n, label }) => (
-              <div key={label}>
-                <p
-                  className="text-3xl md:text-4xl font-bold tracking-tight mb-1 text-white"
-                >
-                  {n}
-                </p>
-                <p className="text-[13px] text-white/45">{label}</p>
-              </div>
-            ))}
+            <p className="inline-flex w-fit items-center gap-2 bg-cream text-ink text-[11px] font-bold tracking-[0.22em] uppercase px-3 py-2 mb-8">
+              Main stage — BizCase 2026
+            </p>
+            <h1 className="display-caps text-[clamp(3.8rem,9vw,7.5rem)] max-w-4xl">
+              Time to <span className="text-brass">move</span>
+            </h1>
+            <p className="mt-7 max-w-xl text-[1.05rem] leading-[1.75] text-cream/75">
+              The Skill Development Club of Jatiya Kabi Kazi Nazrul Islam
+              University. Established March 13, 2018 — transforming students
+              into expert, adept human resources, ready to contribute their
+              excellence anywhere in the world.
+            </p>
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <Ticket href="/partners" tone="stamp" notch="var(--hall)">
+                Partner with us
+              </Ticket>
+              <Ticket href="/membership" tone="outline" notch="var(--hall)">
+                Apply for membership
+              </Ticket>
+            </div>
           </div>
+
+          {/* Counter board */}
+          <CounterBoard className="border-t-[3px] lg:border-t-0 lg:border-l-[3px] border-ink" />
         </div>
       </section>
 
       {/* ══════════════════════════
-          RED RULE DIVIDER
+          PARTNER BOOTHS
           ══════════════════════════ */}
-      <div className="h-1 w-full" style={{ backgroundColor: R }} />
+      <section className="border-b-[3px] border-ink bg-cream">
+        <div className="grid grid-cols-2 lg:grid-cols-4">
+          {BOOTHS.map((name, i) => (
+            <Link
+              key={name}
+              href="/partners"
+              className="group px-5 md:px-8 py-6 border-cream hover:bg-secondary/60 transition-colors [&:not(:last-child)]:border-r-2 [&:not(:last-child)]:border-paper-line"
+            >
+              <p className="text-[10px] font-bold tracking-[0.24em] uppercase text-muted-foreground mb-2">
+                Booth {String(i + 1).padStart(2, "0")}
+              </p>
+              <p className="font-bold text-[15px] leading-snug group-hover:text-stamp transition-colors">
+                {name}
+              </p>
+              <p className="text-[11px] text-muted-foreground mt-1">MoU partner</p>
+            </Link>
+          ))}
+        </div>
+      </section>
 
       {/* ══════════════════════════
-          WHAT WE DO — white bg
+          HALL MARQUEE
           ══════════════════════════ */}
-      <section className="px-5 md:px-8 py-24 bg-white">
-        <div className="container mx-auto max-w-5xl">
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <p className="section-label mb-3">What We Do</p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight max-w-sm">
-                Everything you need to grow.
-              </h2>
+      <div className="overflow-hidden border-b-[3px] border-ink bg-brass text-ink" aria-hidden="true">
+        <div className="marquee-track py-3">
+          {[0, 1].map((copy) => (
+            <div key={copy} className="flex shrink-0 items-center">
+              {MARQUEE_ITEMS.map((item) => (
+                <span key={item} className="display-caps flex items-center text-[15px] whitespace-nowrap">
+                  <span className="px-6">{item}</span>
+                  <span className="text-stamp">★</span>
+                </span>
+              ))}
             </div>
+          ))}
+        </div>
+      </div>
+
+      {/* ══════════════════════════
+          THE HALL PROGRAM
+          ══════════════════════════ */}
+      <section className="px-5 md:px-8 py-24 md:py-28">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <h2 className="display-caps text-4xl md:text-5xl max-w-md">
+              Everything you need to grow.
+            </h2>
             <Link
               href="/about"
-              className="inline-flex items-center gap-1.5 text-[13px] font-semibold hover:gap-3 transition-all"
-              style={{ color: R }}
+              className="group inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.1em] text-stamp hover:gap-3.5 transition-all"
             >
-              About JKKNIU-SDC <ArrowRight className="h-4 w-4" />
+              About the club <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-[#E8E8E8] rounded-2xl overflow-hidden border border-[#E8E8E8]">
-            {FEATURES.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white p-7 hover:bg-[#FAFAFA] transition-colors group">
-                <div
-                  className="h-10 w-10 rounded-xl flex items-center justify-center mb-5 transition-colors"
-                  style={{ backgroundColor: "rgba(200,0,30,0.08)" }}
-                >
-                  <Icon
-                    className="h-5 w-5 transition-colors"
-                    style={{ color: R }}
-                  />
-                </div>
-                <h3 className="font-semibold text-[15px] mb-2">{title}</h3>
-                <p className="text-[13px] text-[#6B6B6B] leading-[1.6]">{desc}</p>
+          <div className="grid sm:grid-cols-2 gap-x-14">
+            {PROGRAM.map(({ title, desc }, i) => (
+              <div key={title} className="program-row py-6">
+                <p className="display-caps text-[15px] text-stamp mb-2 tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="font-bold text-[17px] mb-1.5">{title}</h3>
+                <p className="text-[14px] text-muted-foreground leading-[1.65]">{desc}</p>
               </div>
             ))}
           </div>
@@ -171,60 +182,59 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════
-          EVENTS — off-white bg
+          EVENTS PROGRAM BOARD
           ══════════════════════════ */}
-      <section className="px-5 md:px-8 py-24 bg-[#F7F7F5] border-t border-[#E8E8E8]">
-        <div className="container mx-auto max-w-5xl">
-
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
-            <div>
-              <p className="section-label mb-3">Events</p>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-                Experiences that matter.
-              </h2>
-            </div>
+      <section className="px-5 md:px-8 pb-24 md:pb-28">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <h2 className="display-caps text-4xl md:text-5xl max-w-md">
+              Experiences that matter.
+            </h2>
             <Link
               href="/events"
-              className="inline-flex items-center gap-1.5 text-[13px] font-semibold hover:gap-3 transition-all"
-              style={{ color: R }}
+              className="group inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.1em] text-stamp hover:gap-3.5 transition-all"
             >
               All events <ArrowRight className="h-4 w-4" />
             </Link>
           </div>
 
-          <div className="flex flex-col divide-y divide-[#E8E8E8] rounded-2xl overflow-hidden border border-[#E8E8E8] bg-white">
+          <div className="border-t-2 border-b-2 border-ink">
             {EVENTS.map((ev, i) => (
               <Link
-                key={i}
+                key={ev.title}
                 href="/events"
-                className="flex items-start gap-5 p-6 hover:bg-[#FAFAFA] transition-colors group"
+                className="program-row group flex items-start gap-4 md:gap-7 px-2 md:px-4 py-6 hover:bg-secondary/50 transition-colors"
               >
-                <span className="text-[11px] font-semibold text-[#CACACA] tabular-nums mt-1 w-5 shrink-0">
+                <span className="display-caps text-[15px] text-muted-foreground/70 tabular-nums mt-1.5 shrink-0 w-7">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <div className="flex-1 min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
+                  <div className="flex flex-wrap items-center gap-2.5 mb-2">
                     <span
-                      className="text-[11px] font-semibold px-2 py-0.5 rounded-md"
-                      style={{ color: ev.statusColor, backgroundColor: ev.statusBg }}
+                      className={
+                        ev.status === "Upcoming"
+                          ? "stamp-chip text-hall"
+                          : "stamp-chip text-muted-foreground"
+                      }
                     >
                       {ev.status}
                     </span>
-                    <span className="text-[12px] text-[#6B6B6B]">{ev.date}</span>
-                    <span className="text-[12px] text-[#CACACA]">·</span>
-                    <span className="text-[12px] text-[#6B6B6B]">{ev.category}</span>
+                    <span className="text-[12px] font-semibold text-muted-foreground tabular-nums">
+                      {ev.date}
+                    </span>
+                    <span className="text-[12px] text-muted-foreground/60">·</span>
+                    <span className="text-[12px] font-semibold uppercase tracking-wide text-muted-foreground">
+                      {ev.category}
+                    </span>
                   </div>
-                  <h3
-                    className="font-semibold text-[16px] mb-1 transition-colors"
-                    style={{ color: BK }}
-                  >
+                  <h3 className="display-caps text-[19px] md:text-[21px] mb-1.5 group-hover:text-stamp transition-colors">
                     {ev.title}
                   </h3>
-                  <p className="text-[13px] text-[#6B6B6B] leading-normal line-clamp-2">{ev.desc}</p>
+                  <p className="text-[13.5px] text-muted-foreground leading-normal line-clamp-2 max-w-3xl">
+                    {ev.desc}
+                  </p>
                 </div>
-                <ArrowRight
-                  className="h-4 w-4 shrink-0 mt-1 transition-colors text-[#CACACA] group-hover:text-[#C8001E]"
-                />
+                <ArrowRight className="h-5 w-5 shrink-0 mt-2 text-muted-foreground/40 group-hover:text-stamp transition-colors" />
               </Link>
             ))}
           </div>
@@ -232,105 +242,60 @@ export default function Home() {
       </section>
 
       {/* ══════════════════════════
-          PARTNER STRIP
+          MOMENTS — real event photography
           ══════════════════════════ */}
-      <section className="px-5 md:px-8 py-16 bg-white border-t border-[#E8E8E8]">
-        <div className="container mx-auto max-w-5xl flex flex-col items-center gap-8">
-          <div className="text-center">
-            <p className="section-label mb-2 mx-auto justify-center">Corporate Network</p>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-              Trusted by Top Organizations.
-            </h2>
-            <p className="text-[14px] text-[#6B6B6B] mt-2 max-w-2xl mx-auto">
-              We have proudly collaborated and signed MoUs with major MNCs and corporate companies to pave the way for youth skill development, research, and innovation.
-            </p>
-          </div>
-          
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16 mt-4 opacity-60 grayscale hover:grayscale-0 transition-all">
-            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">AKIJ Resource</span>
-            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">Rise Above All</span>
-            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">AKIJ iBOS</span>
-            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">Excellence Bangladesh</span>
-            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">The Business Standard</span>
-            <span className="font-bold text-xl md:text-2xl text-[#0D0D0D]">US-Bangla Airlines</span>
+      <section className="px-5 md:px-8 py-24 md:py-28 bg-secondary/60 border-y-[3px] border-ink">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="display-caps text-4xl md:text-5xl mb-12 max-w-md">
+            Latest highlights.
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
+            {MOMENTS.map(({ src, alt, caption, wide }) => (
+              <figure
+                key={src}
+                className={`border-2 border-ink bg-card ${wide ? "md:col-span-2" : ""}`}
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={src}
+                    alt={alt}
+                    className="w-full aspect-[4/3] object-cover hover:scale-[1.03] transition-transform duration-500"
+                  />
+                </div>
+                <figcaption className="bg-ink text-cream text-[11px] font-bold tracking-[0.2em] uppercase px-4 py-2.5">
+                  {caption}
+                </figcaption>
+              </figure>
+            ))}
           </div>
 
-          <Button
-            className="mt-4 h-11 px-6 rounded-xl text-white font-semibold touch-target"
-            style={{ backgroundColor: BK }}
-            render={<Link href="/partners" />}
-          >
-            Partner with us
-          </Button>
-        </div>
-      </section>
-
-      {/* ══════════════════════════
-          GALLERY / HIGHLIGHTS
-          ══════════════════════════ */}
-      <section className="px-5 md:px-8 py-16 bg-[#FAFAFA] border-t border-[#E8E8E8]">
-        <div className="container mx-auto max-w-5xl">
-          <div className="text-center mb-10">
-            <p className="section-label mb-2 mx-auto justify-center">Moments</p>
-            <h2 className="text-2xl md:text-3xl font-bold tracking-tight">
-              Latest Highlights
-            </h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {/* CV Writing */}
-            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white relative group">
-              <img src="/images/cv-writing.jpg" alt="CV Writing Competition" className="w-full h-auto object-cover aspect-square group-hover:scale-105 transition-transform duration-700" />
-            </div>
-            {/* Alumni Meetup */}
-            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white relative group">
-              <img src="/images/alumni-meetup.jpg" alt="Alumni Meetup" className="w-full h-auto object-cover aspect-square group-hover:scale-105 transition-transform duration-700" />
-            </div>
-            {/* MoU Signing */}
-            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white relative group">
-              <img src="/images/mou-signing.jpg" alt="MoU Signing" className="w-full h-auto object-cover aspect-square group-hover:scale-105 transition-transform duration-700" />
-            </div>
-            {/* New Year 2026 */}
-            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white md:col-span-2 lg:col-span-1 relative group">
-              <img src="/images/new-year-2026.jpg" alt="Happy New Year 2026" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-            </div>
-            {/* Recap 2025 */}
-            <div className="rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow bg-white md:col-span-2 relative group flex">
-              <img src="/images/recap-2025.jpg" alt="2025 Recap" className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700" />
-            </div>
+          <div className="mt-10">
+            <Link
+              href="/gallery"
+              className="group inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[0.1em] text-stamp hover:gap-3.5 transition-all"
+            >
+              Full gallery <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════
-          FULL CTA — light gray band
+          FINAL BANNER — join
           ══════════════════════════ */}
-      <section className="px-5 md:px-8 py-20 border-t border-[#E8E8E8] bg-[#F7F7F5]">
-        <div className="container mx-auto max-w-5xl flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div>
-            <p className="text-[11px] font-bold tracking-[0.2em] uppercase mb-3" style={{ color: "rgba(0,0,0,0.45)" }}>
-              Join the Club
-            </p>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight leading-tight max-w-sm" style={{ color: BK }}>
-              Your next opportunity starts here.
-            </h2>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <Button
-              className="h-12 px-7 rounded-xl text-white text-[15px] font-semibold touch-target"
-              style={{ backgroundColor: R }}
-              render={<Link href="/membership" />}
-            >
-              Apply Now
-            </Button>
-            <Button
-              variant="ghost"
-              className="h-12 px-7 rounded-xl text-[15px] font-semibold border touch-target"
-              style={{ borderColor: "rgba(0,0,0,0.2)", color: BK }}
-              render={<Link href="/about" />}
-            >
+      <section className="bg-hall text-cream">
+        <div className="container mx-auto max-w-6xl px-5 md:px-8 py-20 md:py-24 flex flex-col md:flex-row items-start md:items-center justify-between gap-10">
+          <h2 className="display-caps text-4xl md:text-5xl leading-[1.05] max-w-lg">
+            Your next opportunity starts here.
+          </h2>
+          <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+            <Ticket href="/membership" tone="cream" notch="var(--hall)">
+              Apply now
+            </Ticket>
+            <Ticket href="/about" tone="outline" notch="var(--hall)">
               Learn more
-            </Button>
+            </Ticket>
           </div>
         </div>
       </section>

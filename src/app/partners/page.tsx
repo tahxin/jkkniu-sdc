@@ -1,221 +1,169 @@
 import { TrendingUp, Users, Globe } from "lucide-react";
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
+import { PageBanner } from "@/components/world/PageBanner";
+import { Ticket } from "@/components/world/Ticket";
 
-const PARTNERS = {
-  platinum: [
-    { name: "TechVentures BD", initial: "T", color: "#31A1DB" },
-    { name: "InnovateBD",      initial: "I", color: "#1C6FA0" },
-  ],
-  gold: [
-    { name: "StartupHub",  initial: "S", color: "#F59E0B" },
-    { name: "CodeLab",     initial: "C", color: "#10B981" },
-    { name: "NexGen",      initial: "N", color: "#8B5CF6" },
-  ],
-  silver: [
-    { name: "DigiSoft",   initial: "D", color: "#6B7280" },
-    { name: "FutureTech", initial: "F", color: "#EC4899" },
-    { name: "ByteForge",  initial: "B", color: "#14B8A6" },
-    { name: "CloudPeak",  initial: "C", color: "#F97316" },
-  ],
-};
+/** Real MoU partners, as named on the club's record. */
+const MOU_PARTNERS = [
+  "AKIJ Resource",
+  "Rise Above All",
+  "AKIJ iBOS",
+  "Excellence Bangladesh",
+  "The Business Standard",
+  "US-Bangla Airlines",
+];
+
+/** Supporters of BizCase 2026, the flagship competition. */
+const BIZCASE_SUPPORTERS = ["SR Dream IT", "US-Bangla", "TBS"];
 
 const BENEFITS = [
   {
     icon: TrendingUp,
-    title: "Brand Exposure",
-    desc: "Reach 500+ active students and 2,500+ alumni across Bangladesh's growing tech community.",
+    title: "Brand exposure",
+    desc: "Reach 500+ active students and 2,500+ alumni across Bangladesh's growing professional community.",
   },
   {
     icon: Users,
-    title: "Talent Pipeline",
-    desc: "Connect directly with top engineering and business students for internships and full-time roles.",
+    title: "Talent pipeline",
+    desc: "Connect directly with top students for internships and full-time roles — the pipeline our job fairs and competitions are built to open.",
   },
   {
     icon: Globe,
-    title: "Community Impact",
-    desc: "Contribute to Bangladesh's next generation of innovators and demonstrate your CSR commitment.",
+    title: "Community impact",
+    desc: "Contribute to Bangladesh's next generation of skilled professionals and demonstrate your CSR commitment on campus.",
   },
 ];
 
-function LogoCard({ name, initial, color }: { name: string; initial: string; color: string }) {
-  return (
-    <div className="bg-white border border-border rounded-2xl p-8 flex flex-col items-center justify-center h-32 gap-3 hover:border-primary/30 hover:shadow-md transition-all">
-      <div
-        className="h-12 w-12 rounded-xl flex items-center justify-center text-white font-bold text-xl"
-        style={{ backgroundColor: color }}
-      >
-        {initial}
-      </div>
-      <span className="text-sm font-semibold text-foreground text-center">{name}</span>
-    </div>
-  );
-}
-
-function TierBadge({ label, color }: { label: string; color: string }) {
-  return (
-    <div className="flex items-center gap-2 mb-6">
-      <span
-        className="px-4 py-1.5 rounded-full text-xs font-bold tracking-widest uppercase text-white"
-        style={{ backgroundColor: color }}
-      >
-        {label}
-      </span>
-    </div>
-  );
-}
+const inputClass =
+  "h-12 w-full rounded-md border border-input bg-cream px-4 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stamp/40 focus:border-stamp transition";
 
 export default function PartnersPage() {
   return (
     <div className="flex flex-col min-h-screen">
+      <PageBanner
+        title="Partners & sponsors"
+        intro="We collaborate with leading companies and organisations to bring real-world opportunities to our students. Together, we build a stronger professional ecosystem in Bangladesh."
+        tone="ink"
+        actions={
+          <Ticket href="#become-partner" tone="stamp" notch="var(--ink)">
+            Become a partner
+          </Ticket>
+        }
+      />
 
-      {/* Hero */}
-      <section
-        className="pt-24 pb-16 px-5 text-center"
-        style={{ background: "linear-gradient(180deg, #EAF5FC 0%, #FFFFFF 100%)" }}
-      >
-        <div className="container mx-auto max-w-3xl">
-          <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-primary mb-4">
-            Industry Collaboration
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight mb-5">
-            Partners &amp; Sponsors
-          </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed mb-8 max-w-xl mx-auto">
-            We collaborate with leading companies and organisations to bring real-world opportunities to our students. Together, we build a stronger tech ecosystem in Bangladesh.
+      {/* Partners of record */}
+      <section className="px-5 md:px-8 py-20 md:py-24">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="display-caps text-3xl md:text-4xl mb-3">Partners of record</h2>
+          <p className="text-[14.5px] text-muted-foreground max-w-[65ch] mb-10">
+            Organisations we have proudly collaborated with — MoUs signed to
+            pave the way for youth skill development, research, and innovation.
           </p>
-          <Button
-            className="h-12 px-8 rounded-2xl bg-primary text-primary-foreground font-semibold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all"
-            render={<Link href="#become-partner" />}
-          >
-            Become a Partner
-          </Button>
-        </div>
-      </section>
 
-      {/* Platinum Tier */}
-      <section className="px-5 py-16 bg-white">
-        <div className="container mx-auto max-w-4xl">
-          <TierBadge label="Platinum" color="#31A1DB" />
-          <h2 className="text-2xl font-bold mb-8">Platinum Partners</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {PARTNERS.platinum.map((p) => (
-              <LogoCard key={p.name} {...p} />
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 border-t-2 border-ink">
+            {MOU_PARTNERS.map((name, i) => (
+              <div
+                key={name}
+                className="border-b border-r border-paper-line px-6 py-7 [&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0"
+              >
+                <p className="text-[10px] font-bold tracking-[0.24em] uppercase text-muted-foreground mb-2 tabular-nums">
+                  MoU {String(i + 1).padStart(2, "0")}
+                </p>
+                <p className="display-caps text-[21px]">{name}</p>
+              </div>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Gold Tier */}
-      <section className="px-5 py-16 bg-secondary/30 border-t border-border">
-        <div className="container mx-auto max-w-4xl">
-          <TierBadge label="Gold" color="#D97706" />
-          <h2 className="text-2xl font-bold mb-8">Gold Partners</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {PARTNERS.gold.map((p) => (
-              <LogoCard key={p.name} {...p} />
-            ))}
+          {/* BizCase supporters */}
+          <div className="mt-10 border-t-2 border-ink pt-8">
+            <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-hall mb-4">
+              BizCase 2026 — supported by
+            </p>
+            <div className="flex flex-wrap gap-x-10 gap-y-3">
+              {BIZCASE_SUPPORTERS.map((name) => (
+                <p key={name} className="display-caps text-[20px] text-foreground/80">
+                  {name}
+                </p>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Silver Tier */}
-      <section className="px-5 py-16 bg-white border-t border-border">
-        <div className="container mx-auto max-w-4xl">
-          <TierBadge label="Silver" color="#6B7280" />
-          <h2 className="text-2xl font-bold mb-8">Silver Partners</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {PARTNERS.silver.map((p) => (
-              <LogoCard key={p.name} {...p} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Partner */}
-      <section className="px-5 py-16 md:py-24 bg-secondary/30 border-t border-border">
-        <div className="container mx-auto max-w-4xl">
-          <div className="text-center mb-12">
-            <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-primary mb-3">Benefits</span>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight">Why Partner With Us?</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {BENEFITS.map(({ icon: Icon, title, desc }) => (
-              <div key={title} className="bg-white border border-border rounded-2xl p-6 hover:border-primary/30 hover:shadow-md transition-all">
-                <div className="h-12 w-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4">
-                  <Icon className="h-6 w-6 text-primary" />
+      {/* Why partner */}
+      <section className="px-5 md:px-8 py-20 md:py-24 bg-secondary/60 border-y-[3px] border-ink">
+        <div className="container mx-auto max-w-6xl">
+          <h2 className="display-caps text-3xl md:text-4xl mb-10">Why partner with us?</h2>
+          <div className="grid md:grid-cols-3 gap-x-14">
+            {BENEFITS.map(({ icon: Icon, title, desc }, i) => (
+              <div key={title} className="program-row py-7">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="display-caps text-[15px] text-stamp tabular-nums">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <Icon className="h-5 w-5 text-hall" />
                 </div>
-                <h3 className="font-bold text-lg mb-2">{title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
+                <h3 className="font-bold text-[17px] mb-2">{title}</h3>
+                <p className="text-[14px] text-muted-foreground leading-[1.65]">{desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Become a Partner Form */}
-      <section id="become-partner" className="px-5 py-16 md:py-24 bg-white border-t border-border">
-        <div className="container mx-auto max-w-2xl">
-          <div
-            className="rounded-3xl overflow-hidden"
-            style={{ background: "linear-gradient(135deg, #1C6FA0 0%, #31A1DB 100%)" }}
-          >
-            <div className="p-8 sm:p-12">
-              <span className="inline-block text-xs font-bold tracking-[0.25em] uppercase text-white/70 mb-3">
-                Partnership Enquiry
-              </span>
-              <h2 className="text-3xl font-bold text-white mb-2">Become a Partner</h2>
-              <p className="text-white/80 mb-8 leading-relaxed">
-                Fill out the form below and our partnership team will get back to you within 2 business days.
-              </p>
+      {/* Inquiry form */}
+      <section id="become-partner" className="px-5 md:px-8 py-20 md:py-24 scroll-mt-24">
+        <div className="container mx-auto max-w-3xl">
+          <div className="bg-card border-2 border-ink p-7 sm:p-12">
+            <h2 className="display-caps text-3xl md:text-4xl mb-3">Become a partner</h2>
+            <p className="text-[14.5px] text-muted-foreground leading-[1.7] mb-10 max-w-[60ch]">
+              Fill out the form below and our partnership team will get back to
+              you within 2 business days.
+            </p>
 
-              <form method="POST" className="flex flex-col gap-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-white/90">Your Name</label>
-                    <input
-                      type="text"
-                      placeholder="Full name"
-                      className="h-12 rounded-xl px-4 bg-white/15 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-1.5">
-                    <label className="text-sm font-semibold text-white/90">Company</label>
-                    <input
-                      type="text"
-                      placeholder="Company name"
-                      className="h-12 rounded-xl px-4 bg-white/15 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
-                    />
-                  </div>
+            <form method="POST" className="flex flex-col gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                <div className="flex flex-col gap-1.5">
+                  <label htmlFor="p-name" className="text-[13px] font-bold uppercase tracking-[0.06em]">
+                    Your name
+                  </label>
+                  <input id="p-name" name="name" type="text" placeholder="Full name" className={inputClass} />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-white/90">Email Address</label>
-                  <input
-                    type="email"
-                    placeholder="you@company.com"
-                    className="h-12 rounded-xl px-4 bg-white/15 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/40 transition"
-                  />
+                  <label htmlFor="p-company" className="text-[13px] font-bold uppercase tracking-[0.06em]">
+                    Company
+                  </label>
+                  <input id="p-company" name="company" type="text" placeholder="Company name" className={inputClass} />
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-sm font-semibold text-white/90">Message</label>
-                  <textarea
-                    rows={4}
-                    placeholder="Tell us about your partnership goals..."
-                    className="rounded-xl px-4 py-3 bg-white/15 border border-white/20 text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-white/40 transition resize-none"
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="mt-2 h-12 w-full rounded-2xl bg-white text-primary font-semibold text-base hover:bg-white/90 active:scale-[0.98] transition-all"
-                >
-                  Submit Enquiry
-                </button>
-              </form>
-            </div>
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="p-email" className="text-[13px] font-bold uppercase tracking-[0.06em]">
+                  Email address
+                </label>
+                <input id="p-email" name="email" type="email" placeholder="you@company.com" className={inputClass} />
+              </div>
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="p-message" className="text-[13px] font-bold uppercase tracking-[0.06em]">
+                  Message
+                </label>
+                <textarea
+                  id="p-message"
+                  name="message"
+                  rows={4}
+                  placeholder="Tell us about your partnership goals…"
+                  className="w-full rounded-md border border-input bg-cream px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stamp/40 focus:border-stamp transition resize-none"
+                />
+              </div>
+              <button
+                type="submit"
+                className="stub self-start inline-flex touch-target items-center bg-stamp text-white text-[14px] font-bold uppercase tracking-[0.08em] px-8 py-3.5 hover:brightness-110 transition-[filter]"
+                style={{ ["--notch" as string]: "var(--card)" }}
+              >
+                Submit enquiry
+              </button>
+            </form>
           </div>
         </div>
       </section>
-
     </div>
   );
 }

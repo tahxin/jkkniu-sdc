@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { Calendar, User, ArrowRight, Tag, Mail } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { PageBanner } from "@/components/world/PageBanner";
+import { Ticket } from "@/components/world/Ticket";
 
-// ─── Data ────────────────────────────────────────────────────────────────────
+// ─── Data (factual, unchanged) ────────────────────────────────────────────────
 
 const featuredPost = {
   category: "Event Recap",
@@ -63,196 +64,138 @@ const posts = [
   },
 ];
 
-// Gradient palette cycling for thumbnail variety
-const thumbGradients = [
-  "from-[#31A1DB]/20 via-[#31A1DB]/10 to-sky-50",
-  "from-sky-200/40 via-[#31A1DB]/10 to-white",
-  "from-[#31A1DB]/30 via-sky-100/30 to-sky-50",
-  "from-indigo-100/60 via-sky-100/30 to-white",
-  "from-[#31A1DB]/20 via-indigo-50/30 to-sky-50",
-];
-
-const thumbEmoji = ["💡", "🏆", "🎉", "🛠️", "🎓"];
+const inputClass =
+  "h-12 w-full rounded-md border border-input bg-cream px-4 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stamp/40 focus:border-stamp transition";
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-white font-sans">
-      {/* ── Hero ── */}
-      <section className="bg-gradient-to-b from-[#EAF5FC] to-white pt-24 pb-16 px-5">
-        <div className="container mx-auto max-w-4xl text-center">
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-primary mb-3">
-            JKKNIU-SDC
-          </p>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 mb-4">
-            Blog &amp; News
-          </h1>
-          <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Stories, event recaps, tutorials, and announcements from the
-            Software Development Club of Jatiya Kabi Kazi Nazrul Islam
-            University.
-          </p>
-        </div>
-      </section>
+    <div className="flex flex-col min-h-screen">
+      <PageBanner
+        title="Blog & news"
+        intro="Stories, event recaps, tutorials, and announcements from the Skill Development Club of Jatiya Kabi Kazi Nazrul Islam University."
+        tone="ink"
+      />
 
-      {/* ── Featured Post ── */}
-      <section className="px-5 py-16 md:py-20">
-        <div className="container mx-auto max-w-4xl">
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-primary mb-6">
-            Featured Post
+      {/* ── Featured — the front page of the board ── */}
+      <section className="px-5 md:px-8 py-20 md:py-24">
+        <div className="container mx-auto max-w-6xl">
+          <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-stamp marker-diamond mb-5">
+            Featured post
           </p>
 
-          <article className="bg-white border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-            {/* Thumbnail */}
-            <div className="h-56 sm:h-72 bg-gradient-to-br from-[#31A1DB]/30 via-sky-100/40 to-[#EAF5FC] relative flex items-center justify-center">
-              <span className="text-6xl sm:text-8xl select-none opacity-20">
-                🚀
-              </span>
-              {/* Category badge */}
-              <span className="absolute top-4 left-4 inline-flex items-center gap-1.5 bg-primary text-white text-xs font-semibold px-3 py-1.5 rounded-full">
-                <Tag size={11} />
-                {featuredPost.category}
-              </span>
-            </div>
-
-            {/* Content */}
-            <div className="p-6 sm:p-8">
-              {/* Meta */}
-              <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                <span className="flex items-center gap-1.5">
-                  <Calendar size={14} className="text-primary" />
+          <article className="bg-card border-2 border-ink">
+            <div className="p-7 sm:p-12">
+              <div className="flex flex-wrap items-center gap-3 mb-6">
+                <span className="stamp-chip text-stamp">
+                  {featuredPost.category}
+                </span>
+                <span className="text-[12px] font-semibold text-muted-foreground tabular-nums">
                   {featuredPost.date}
                 </span>
               </div>
 
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900 mb-3 leading-snug">
-                {featuredPost.title}
-              </h2>
-              <p className="text-muted-foreground leading-relaxed mb-6 max-w-2xl">
+              <Link href={`/blog/${featuredPost.slug}`} className="group block">
+                <h2 className="display-caps text-[clamp(2rem,5vw,3.5rem)] max-w-3xl group-hover:text-stamp transition-colors">
+                  {featuredPost.title}
+                </h2>
+              </Link>
+
+              <p className="mt-6 text-[15px] text-muted-foreground leading-[1.75] max-w-[65ch]">
                 {featuredPost.excerpt}
               </p>
 
-              {/* Author + CTA */}
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              <div className="mt-10 flex flex-col sm:flex-row sm:items-center justify-between gap-6">
                 <div className="flex items-center gap-3">
-                  {/* Avatar placeholder */}
-                  <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center shrink-0">
-                    <User size={18} className="text-primary" />
-                  </div>
+                  <span
+                    className="display-caps inline-flex items-center justify-center h-11 w-11 shrink-0 bg-hall text-cream text-[13px]"
+                    aria-hidden="true"
+                  >
+                    {featuredPost.author
+                      .split(" ")
+                      .slice(0, 2)
+                      .map((n) => n[0])
+                      .join("")}
+                  </span>
                   <div>
-                    <p className="text-sm font-semibold text-gray-900">
+                    <p className="text-[14px] font-bold leading-tight">
                       {featuredPost.author}
                     </p>
-                    <p className="text-xs text-muted-foreground">
+                    <p className="text-[12px] text-muted-foreground leading-tight mt-0.5">
                       {featuredPost.authorRole}
                     </p>
                   </div>
                 </div>
 
-                <Button
-                  className="rounded-full h-11 px-6 self-start sm:self-auto"
-                  render={
-                    <Link href={`/blog/${featuredPost.slug}`}>
-                      Read Article
-                    </Link>
-                  }
-                />
+                <Ticket href={`/blog/${featuredPost.slug}`} tone="stamp" notch="var(--card)">
+                  Read article <ArrowUpRight className="h-4 w-4" />
+                </Ticket>
               </div>
             </div>
           </article>
         </div>
       </section>
 
-      {/* ── Post Grid ── */}
-      <section className="px-5 pb-16 md:pb-24">
-        <div className="container mx-auto max-w-4xl">
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-primary mb-6">
-            Latest Posts
+      {/* ── Latest posts — numbered press rows ── */}
+      <section className="px-5 md:px-8 pb-24">
+        <div className="container mx-auto max-w-6xl">
+          <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-stamp marker-diamond mb-5">
+            Latest posts
           </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {posts.map((post, idx) => {
-              // Last card spans 2 cols on sm when total count is odd
-              const isLastOdd =
-                idx === posts.length - 1 && posts.length % 2 !== 0;
-              return (
-                <article
-                  key={post.slug}
-                  className={`bg-white border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col${
-                    isLastOdd ? " sm:col-span-2 md:col-span-1" : ""
-                  }`}
-                >
-                  {/* Thumbnail */}
-                  <div
-                    className={`h-44 bg-gradient-to-br ${
-                      thumbGradients[idx % thumbGradients.length]
-                    } relative flex items-center justify-center shrink-0`}
-                  >
-                    <span className="text-4xl select-none opacity-20">
-                      {thumbEmoji[idx]}
-                    </span>
-                    <span className="absolute top-3 left-3 inline-flex items-center gap-1 bg-primary/10 text-primary text-xs font-semibold px-2.5 py-1 rounded-full border border-primary/20">
-                      <Tag size={10} />
-                      {post.category}
-                    </span>
-                  </div>
-
-                  {/* Content */}
-                  <div className="p-5 flex flex-col flex-1">
-                    <div className="flex items-center gap-1.5 text-xs text-muted-foreground mb-3">
-                      <Calendar size={12} className="text-primary" />
+          <div className="border-t-2 border-b-2 border-ink">
+            {posts.map((post, i) => (
+              <Link
+                key={post.slug}
+                href={`/blog/${post.slug}`}
+                className="program-row group flex items-start gap-4 md:gap-7 px-2 md:px-4 py-6 hover:bg-secondary/50 transition-colors"
+              >
+                <span className="display-caps text-[15px] text-muted-foreground/70 tabular-nums mt-1.5 shrink-0 w-7">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap items-center gap-2.5 mb-2">
+                    <span className="stamp-chip text-hall">{post.category}</span>
+                    <span className="text-[12px] font-semibold text-muted-foreground tabular-nums">
                       {post.date}
-                    </div>
-
-                    <h3 className="text-base font-bold text-gray-900 leading-snug mb-2">
-                      {post.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed mb-4 flex-1">
-                      {post.excerpt}
-                    </p>
-
-                    {/* Card footer */}
-                    <div className="flex items-center justify-between mt-auto pt-3 border-t border-border">
-                      <span className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                        <User size={12} className="text-primary" />
-                        {post.author}
-                      </span>
-                      <Link
-                        href={`/blog/${post.slug}`}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-primary hover:underline"
-                      >
-                        Read more
-                        <ArrowRight size={12} />
-                      </Link>
-                    </div>
+                    </span>
                   </div>
-                </article>
-              );
-            })}
+                  <h3 className="display-caps text-[19px] md:text-[21px] mb-1.5 group-hover:text-stamp transition-colors">
+                    {post.title}
+                  </h3>
+                  <p className="text-[13.5px] text-muted-foreground leading-normal line-clamp-2 max-w-3xl">
+                    {post.excerpt}
+                  </p>
+                </div>
+                <div className="hidden md:flex flex-col items-end gap-1 shrink-0 mt-1">
+                  <span className="text-[12px] font-semibold text-muted-foreground">
+                    {post.author}
+                  </span>
+                  <ArrowRight className="h-5 w-5 text-muted-foreground/40 group-hover:text-stamp transition-colors" />
+                </div>
+                <ArrowRight className="h-5 w-5 shrink-0 mt-2 text-muted-foreground/40 group-hover:text-stamp transition-colors md:hidden" />
+              </Link>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── Newsletter Signup ── */}
-      <section className="px-5 py-16 md:py-24 bg-gradient-to-b from-[#EAF5FC] to-white">
-        <div className="container mx-auto max-w-4xl text-center">
-          <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-primary/10 border border-primary/20 mb-5">
-            <Mail size={22} className="text-primary" />
-          </div>
-          <p className="text-xs font-bold tracking-[0.25em] uppercase text-primary mb-3">
+      {/* ── Newsletter ── */}
+      <section className="bg-hall text-cream border-y-[3px] border-ink">
+        <div className="container mx-auto max-w-2xl px-5 md:px-8 py-20 md:py-24 text-center">
+          <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-brass mb-4">
             Newsletter
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-gray-900 mb-3">
-            Stay Updated
+          <h2 className="display-caps text-[clamp(2.2rem,5.5vw,3.5rem)]">
+            Stay updated
           </h2>
-          <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+          <p className="mt-5 text-[15px] text-cream/70 leading-[1.75] max-w-md mx-auto">
             Get the latest SDC news, event announcements, and workshop invites
             delivered straight to your inbox.
           </p>
 
-          {/* Email input row */}
-          <form className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+          <form className="mt-10 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <label htmlFor="newsletter-email" className="sr-only">
               Email address
             </label>
@@ -261,21 +204,21 @@ export default function BlogPage() {
               type="email"
               placeholder="your@email.com"
               required
-              className="flex-1 h-11 px-4 rounded-full border border-border bg-white text-sm text-gray-900 placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition"
+              className="flex-1 h-12 px-4 rounded-md border border-cream/30 bg-cream text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-brass/60 transition"
             />
             <button
               type="submit"
-              className="h-11 px-6 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary/90 active:scale-95 transition whitespace-nowrap"
+              className="h-12 px-7 bg-brass text-ink text-[14px] font-bold uppercase tracking-[0.08em] hover:brightness-110 transition-[filter] whitespace-nowrap"
             >
               Subscribe
             </button>
           </form>
 
-          <p className="text-xs text-muted-foreground mt-4">
+          <p className="text-[12px] text-cream/50 mt-5">
             No spam, ever. Unsubscribe anytime.
           </p>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
