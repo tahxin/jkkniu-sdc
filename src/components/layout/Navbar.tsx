@@ -5,11 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet";
-import { Button } from "@/components/ui/button";
-import { Menu, X, ArrowRight } from "lucide-react";
-
-const R = "#C8001E";   // red
-const BK = "#0D0D0D";  // near-black
+import { Menu, X } from "lucide-react";
 
 const NAV_LINKS = [
   { name: "About",      href: "/about" },
@@ -22,147 +18,141 @@ const NAV_LINKS = [
   { name: "Contact",    href: "/contact" },
 ];
 
+/**
+ * The wayfinding rail: a cream signage bar with a hard ink rule,
+ * diamond markers on each link, and a stamped JOIN NOW ticket.
+ */
 export function Navbar({ isLoggedIn = false }: { isLoggedIn?: boolean }) {
   const [open, setOpen] = React.useState(false);
-  const [scrolled, setScrolled] = React.useState(false);
   const pathname = usePathname();
 
-  React.useEffect(() => {
-    const fn = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", fn, { passive: true });
-    fn();
-    return () => window.removeEventListener("scroll", fn);
-  }, []);
-
-  const isHome = pathname === "/";
-  const useLightText = isHome && !scrolled;
-  const useSolidBg = !isHome || scrolled;
-
   return (
-    <header className={cn(
-      "fixed inset-x-0 top-0 z-50 transition-all duration-200",
-      useSolidBg ? "bg-white/96 backdrop-blur-sm border-b border-[#E8E8E8] shadow-sm" : "bg-transparent"
-    )}>
-      <nav className="container mx-auto max-w-5xl flex h-16 items-center justify-between px-5 md:px-8">
+    <header className="fixed inset-x-0 top-0 z-50 bg-cream border-b-[3px] border-ink">
+      <nav className="container mx-auto max-w-6xl flex h-16 items-center justify-between px-5 md:px-8">
 
         {/* Wordmark */}
-        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="flex items-center justify-center h-9 w-9 bg-white p-1 rounded-md shadow-sm border border-[#E8E8E8]">
+        <Link href="/" className="flex items-center gap-2.5 shrink-0">
+          <div className="flex items-center justify-center h-10 w-10 bg-white p-1.5 rounded-md border-2 border-ink">
             <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU-SDC Logo" className="w-full h-full object-contain" />
           </div>
-          <span className="font-bold text-[15px] tracking-tight transition-colors" style={{ color: useLightText ? "white" : BK }}>
-            JKKNIU<span style={{ color: R }}>-SDC</span>
+          <span className="display-caps text-[19px] tracking-[0.02em]">
+            JKKNIU<span className="text-stamp">-SDC</span>
           </span>
         </Link>
 
-        {/* Desktop links */}
-        <ul className="hidden lg:flex items-center gap-0.5">
-          {NAV_LINKS.map((l) => (
-            <li key={l.name}>
-              <Link
-                href={l.href}
-                className={cn(
-                  "px-3 py-2 text-[13px] font-medium rounded-md transition-colors",
-                  !useLightText 
-                    ? "text-[#6B6B6B] hover:text-[#0D0D0D] hover:bg-[#F7F7F5]" 
-                    : "text-white/70 hover:text-white hover:bg-white/10"
-                )}
-              >
-                {l.name}
-              </Link>
-            </li>
-          ))}
+        {/* Desktop links — wayfinding with diamond markers */}
+        <ul className="hidden lg:flex items-center gap-1">
+          {NAV_LINKS.map((l) => {
+            const active = pathname.startsWith(l.href);
+            return (
+              <li key={l.name}>
+                <Link
+                  href={l.href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "marker-diamond px-3 py-2 text-[12px] font-bold uppercase tracking-[0.1em] transition-colors touch-target",
+                    active ? "text-stamp" : "text-ink/60 hover:text-ink"
+                  )}
+                >
+                  {l.name}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Desktop CTA */}
-        <div className="hidden lg:flex items-center gap-3 shrink-0">
-          {isLoggedIn ? (
-            <Link href="/profile" className={cn(
-              "text-[13px] font-medium transition-colors",
-              !useLightText ? "text-[#6B6B6B] hover:text-[#0D0D0D]" : "text-white/70 hover:text-white"
-            )}>
-              Profile
-            </Link>
-          ) : (
-            <Link href="/login" className={cn(
-              "text-[13px] font-medium transition-colors",
-              !useLightText ? "text-[#6B6B6B] hover:text-[#0D0D0D]" : "text-white/70 hover:text-white"
-            )}>
-              Sign in
-            </Link>
-          )}
-          <Button
-            className="h-9 px-4 rounded-lg text-white text-[13px] font-semibold shadow-none transition-colors"
-            style={{ backgroundColor: R }}
-            render={<Link href="/membership" />}
+        <div className="hidden lg:flex items-center gap-4 shrink-0">
+          <Link
+            href={isLoggedIn ? "/profile" : "/login"}
+            className="text-[12px] font-bold uppercase tracking-[0.1em] text-ink/60 hover:text-ink transition-colors"
           >
-            Join Now
-          </Button>
+            {isLoggedIn ? "Profile" : "Sign in"}
+          </Link>
+          <Link
+            href="/membership"
+            className="stub inline-flex items-center bg-stamp text-white text-[12px] font-bold uppercase tracking-[0.1em] px-5 py-2.5 hover:brightness-110 transition-[filter]"
+            style={{ ["--notch" as string]: "var(--cream)" }}
+          >
+            Join now
+          </Link>
         </div>
 
         {/* Mobile hamburger */}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger
             render={
-              <Button
-                variant="ghost"
-                size="icon"
-                className={cn(
-                  "flex lg:hidden h-9 w-9 rounded-lg transition-colors",
-                  !useLightText 
-                    ? "hover:bg-[#F7F7F5] text-[#0D0D0D]" 
-                    : "hover:bg-white/10 text-white"
-                )}
+              <button
+                type="button"
+                aria-label={open ? "Close menu" : "Open menu"}
+                className="flex lg:hidden h-11 w-11 items-center justify-center border-2 border-ink rounded-md text-ink"
               />
             }
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </SheetTrigger>
 
-          <SheetContent side="right" className="w-full sm:w-80 p-0 border-l border-[#E8E8E8] bg-white">
+          <SheetContent side="right" className="w-full sm:w-80 p-0 border-l-0 bg-ink text-cream">
             <SheetTitle className="sr-only">Navigation</SheetTitle>
             <div className="flex flex-col h-full">
 
-              {/* Drawer header — black bar with logo */}
-              <div className="flex items-center justify-between px-5 h-16 border-b border-[#E8E8E8]" style={{ backgroundColor: BK }}>
+              {/* Drawer header */}
+              <div className="flex items-center justify-between px-5 h-16 border-b border-cream/15">
                 <Link href="/" onClick={() => setOpen(false)} className="flex items-center gap-2.5">
-                  <div className="flex items-center justify-center h-8 w-8 bg-white p-1 rounded-md shadow-sm">
+                  <div className="flex items-center justify-center h-9 w-9 bg-white p-1 rounded-md">
                     <img src="/jkkniu-sdc transparent logo.png" alt="JKKNIU-SDC Logo" className="w-full h-full object-contain" />
                   </div>
-                  <span className="font-bold text-[15px] text-white">JKKNIU-SDC</span>
+                  <span className="display-caps text-[17px]">
+                    JKKNIU<span className="text-stamp">-SDC</span>
+                  </span>
                 </Link>
+                <button
+                  type="button"
+                  aria-label="Close menu"
+                  onClick={() => setOpen(false)}
+                  className="h-11 w-11 flex items-center justify-center text-cream"
+                >
+                  <X className="h-5 w-5" />
+                </button>
               </div>
 
               {/* Links */}
               <div className="flex-1 overflow-y-auto py-3 px-3">
-                {NAV_LINKS.map((l) => (
-                  <Link
-                    key={l.name}
-                    href={l.href}
-                    onClick={() => setOpen(false)}
-                    className="flex items-center justify-between px-3 py-3 rounded-lg text-[15px] font-medium text-[#6B6B6B] hover:text-[#0D0D0D] hover:bg-[#F7F7F5] transition-colors touch-target"
-                  >
-                    {l.name}
-                    <ArrowRight className="h-4 w-4 opacity-30" />
-                  </Link>
-                ))}
+                {NAV_LINKS.map((l) => {
+                  const active = pathname.startsWith(l.href);
+                  return (
+                    <Link
+                      key={l.name}
+                      href={l.href}
+                      onClick={() => setOpen(false)}
+                      aria-current={active ? "page" : undefined}
+                      className={cn(
+                        "flex items-center justify-between px-3 py-3.5 rounded-md display-caps text-[19px] touch-target transition-colors",
+                        active ? "text-brass" : "text-cream/80 hover:text-cream hover:bg-cream/5"
+                      )}
+                    >
+                      {l.name}
+                    </Link>
+                  );
+                })}
               </div>
 
               {/* CTA footer */}
-              <div className="p-4 border-t border-[#E8E8E8]">
-                <Button
-                  className="w-full h-11 rounded-xl text-white font-semibold"
-                  style={{ backgroundColor: R }}
-                  render={<Link href="/membership" onClick={() => setOpen(false)} />}
+              <div className="p-4 border-t border-cream/15 safe-bottom">
+                <Link
+                  href="/membership"
+                  onClick={() => setOpen(false)}
+                  className="stub inline-flex w-full items-center justify-center bg-stamp text-white text-[14px] font-bold uppercase tracking-[0.08em] px-5 py-3.5"
+                  style={{ ["--notch" as string]: "var(--ink)" }}
                 >
-                  Join JKKNIU-SDC
-                </Button>
+                  Join now
+                </Link>
                 <Link
                   href={isLoggedIn ? "/profile" : "/login"}
                   onClick={() => setOpen(false)}
-                  className="flex items-center justify-center text-[13px] text-[#6B6B6B] hover:text-[#0D0D0D] py-3 mt-1 touch-target transition-colors"
+                  className="flex items-center justify-center text-[12px] font-bold uppercase tracking-[0.14em] text-cream/60 hover:text-cream py-3 mt-1 touch-target transition-colors"
                 >
-                  {isLoggedIn ? "Manage Profile" : "Sign in to your account"}
+                  {isLoggedIn ? "Manage profile" : "Sign in to your account"}
                 </Link>
               </div>
             </div>
