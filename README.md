@@ -7,7 +7,6 @@ Official website of the **JKKNIU-Skill Development Club** at Jatiya Kabi Kazi Na
 - **Public site** — home, about, events, membership, blog, committee, gallery, partners, and contact pages
 - **Authentication** — email/password login with role support (`user` / `admin`), JWT sessions via NextAuth v5
 - **User profiles** — members can update their name, bio, phone, and department
-- **Practice arena** — LeetCode-style problem solving with a Monaco code editor, starter code, and automated test-case results
 - **Protected routes** — `/profile` is gated by auth middleware and redirects guests to `/login`
 
 ## Tech Stack
@@ -19,7 +18,6 @@ Official website of the **JKKNIU-Skill Development Club** at Jatiya Kabi Kazi Na
 | Database   | [Prisma 5](https://prisma.io) + SQLite            |
 | Styling    | Tailwind CSS 4, shadcn/ui, `tw-animate-css`       |
 | Animation  | Framer Motion                                     |
-| Editor     | Monaco Editor (`@monaco-editor/react`)            |
 | Icons      | Lucide React                                      |
 | Analytics  | Vercel Analytics                                  |
 
@@ -100,15 +98,9 @@ src/
 │   ├── contact/            # Contact page
 │   ├── login/              # Login page + server actions
 │   ├── profile/            # Member profile (auth-protected)
-│   ├── practice/           # Coding practice arena
-│   │   ├── CodeEditor.tsx      # Monaco editor
-│   │   ├── ProblemDescription.tsx
-│   │   ├── TestResults.tsx
-│   │   └── ...
 │   └── api/auth/[...nextauth]/  # NextAuth route handler
 ├── auth.ts                 # NextAuth config (credentials + JWT callbacks)
 ├── middleware.ts           # Route protection for /profile
-├── data/problems.ts        # Practice problems, test cases & starter code
 ├── lib/prisma.ts           # Prisma client singleton
 └── components/
     ├── layout/             # Navbar, Footer

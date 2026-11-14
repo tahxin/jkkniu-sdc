@@ -7,9 +7,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-archivo);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-display: var(--font-anton);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -34,6 +34,11 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-cream: var(--cream);
+  --color-hall: var(--hall);
+  --color-stamp: var(--stamp);
+  --color-brass: var(--brass);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -44,47 +49,49 @@
 }
 
 /* ─────────────────────────────────────────────
-   DESIGN TOKENS
-   Primary   : #C8001E  – vermillion-red (BBC / institutional, not cherry)
-   Highlight : #F5A800  – warm amber-gold (professional, not neon)
-   Base      : #0D0D0D  – near-black
-   Surface   : #FFFFFF / #F7F7F5
+   DESIGN TOKENS — The Job Fair Hall
+   Badge cream : #F4EFE3  – hall ground
+   Hall green  : #0F5132  – banner panels
+   Ink black   : #101010  – rules, counters, type
+   Stamp red   : #D63324  – primary actions, markers
+   Brass       : #F2C230  – counter labels, signage
 ───────────────────────────────────────────── */
 :root {
-  --background:         #FFFFFF;
-  --foreground:         #0D0D0D;
-  --card:               #FFFFFF;
-  --card-foreground:    #0D0D0D;
-  --popover:            #FFFFFF;
-  --popover-foreground: #0D0D0D;
-  --primary:            #C8001E;   /* institutional vermillion red */
+  --background:         #F4EFE3;
+  --foreground:         #101010;
+  --card:               #FAF7EE;
+  --card-foreground:    #101010;
+  --popover:            #FAF7EE;
+  --popover-foreground: #101010;
+  --primary:            #D63324;   /* stamp red — actions only */
   --primary-foreground: #FFFFFF;
-  --secondary:          #F7F7F5;
-  --secondary-foreground: #0D0D0D;
-  --muted:              #F7F7F5;
-  --muted-foreground:   #6B6B6B;
-  --accent:             #F5A800;   /* amber-gold highlight */
-  --accent-foreground:  #0D0D0D;
+  --secondary:          #EAE2CF;   /* deeper paper */
+  --secondary-foreground: #101010;
+  --muted:              #EAE2CF;
+  --muted-foreground:   #575147;
+  --accent:             #EAE2CF;
+  --accent-foreground:  #101010;
   --destructive:        oklch(0.577 0.245 27.325);
-  --border:             #E8E8E8;
-  --input:              #E8E8E8;
-  --ring:               #C8001E;
-  --radius:             0.625rem;
-  --sidebar:            #F7F7F5;
-  --sidebar-foreground: #0D0D0D;
-  --sidebar-primary:    #C8001E;
+  --border:             #C9C0AC;
+  --input:              #C9C0AC;
+  --ring:               #D63324;
+  --radius:             0.375rem;
+  --sidebar:            #EAE2CF;
+  --sidebar-foreground: #101010;
+  --sidebar-primary:    #D63324;
   --sidebar-primary-foreground: #FFFFFF;
-  --sidebar-accent:     #F5F5F5;
-  --sidebar-accent-foreground: #0D0D0D;
-  --sidebar-border:     #E8E8E8;
-  --sidebar-ring:       #C8001E;
-}
+  --sidebar-accent:     #EAE2CF;
+  --sidebar-accent-foreground: #101010;
+  --sidebar-border:     #C9C0AC;
+  --sidebar-ring:       #D63324;
 
-/* CSS custom props exposed for use in style="" attributes */
-:root {
-  --red:    #C8001E;
-  --yellow: #F5A800;
-  --black:  #0D0D0D;
+  /* World colors, exposed for style="" and utilities */
+  --ink:    #101010;
+  --cream:  #F4EFE3;
+  --hall:   #0F5132;
+  --stamp:  #D63324;
+  --brass:  #F2C230;
+  --paper-line: #C9C0AC;
 }
 
 @layer base {
@@ -100,13 +107,18 @@
     @apply font-sans;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    scrollbar-color: var(--ink) var(--cream);
+  }
+  ::selection {
+    background: var(--brass);
+    color: var(--ink);
+  }
+  input, textarea, select {
+    caret-color: var(--stamp);
   }
 }
 
 @layer utilities {
-  .section-label {
-    @apply text-[11px] font-bold tracking-[0.2em] uppercase text-muted-foreground;
-  }
   .touch-target {
     min-height: 44px;
     min-width: 44px;
@@ -114,11 +126,80 @@
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
   .safe-top    { padding-top: env(safe-area-inset-top); }
 
-  /* Yellow underline accent for headings */
-  .underline-yellow {
-    text-decoration: underline;
-    text-decoration-color: #F5A800;
-    text-decoration-thickness: 4px;
-    text-underline-offset: 6px;
+  /* Wayfinding diamond marker */
+  .marker-diamond::before {
+    content: "";
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 10px;
+    background: currentColor;
+    opacity: 0.35;
+    transform: rotate(45deg);
+  }
+
+  /* Billboard display type */
+  .display-caps {
+    font-family: var(--font-display), Impact, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    line-height: 0.95;
+  }
+
+  /* Hard ink rules */
+  .rule-ink    { border-color: var(--ink); }
+  .rule-paper  { border-color: var(--paper-line); }
+
+  /* Ticket stub notches — the notch color is the surface behind the ticket */
+  .stub {
+    position: relative;
+    --notch: var(--hall);
+  }
+  .stub::before,
+  .stub::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 14px;
+    height: 14px;
+    border-radius: 9999px;
+    background: var(--notch);
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  .stub::before { left: -7px; }
+  .stub::after  { right: -7px; }
+
+  /* Program-board numbered row */
+  .program-row {
+    border-top: 1px solid var(--paper-line);
+  }
+
+  /* Status stamp chip */
+  .stamp-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border: 1.5px solid currentColor;
+    padding: 3px 10px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 2px;
+  }
+
+  /* Hall marquee */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 36s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; }
   }
 }

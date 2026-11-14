@@ -1,4 +1,4 @@
 {
-  "excludes": [".agents/**", ".claude/**", ".windsurf/**"],
+  "excludes": [],
   "gitignore": true
 }
