@@ -1,0 +1,130 @@
+{
+  "title": "Choose the visual world",
+  "question": "The roll assigned The Job Fair Hall. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "kind": "assigned",
+      "label": "The Job Fair Hall",
+      "kicker": "THE ROLL",
+      "lineage": "campus job-fair exhibition halls",
+      "thesis": "The homepage is the fair floor: the club's hall at full event scale.",
+      "palette": ["#F4EFE3", "#0F5132", "#101010", "#D63324"],
+      "materials": ["roll-up banner vinyl", "badge lanyard", "wayfinding signage"],
+      "viewport": "Main-stage banner hero: the club's headline at billboard scale, partner and apply actions as ticket stubs, nav as a wayfinding rail.",
+      "risk": "Reads carnival when the banner type is set timidly.",
+      "raised": [
+        { "from": "signals-instruments-nixie-laboratory-counter", "raise": "Stats render as a live counting board that visibly ticks to each number." },
+        { "from": "medium-native-algorave-source-floor", "raise": "One shared stage clock orchestrates every marquee and reveal; no scattered hover effects." },
+        { "from": "posters-covers-sleeves-fight-poster", "raise": "Condensed display caps at collision scale on the main banner." },
+        { "from": "digital-design-canon-greiman-hybrid-collage", "raise": "Type scale jumps footnote-to-billboard between sections." },
+        { "from": "dream-surreal-impossible-worlds-alphabet-storm", "raise": "Display type carries structural mass - headlines as architecture, not decoration." }
+      ],
+      "comp": ".impeccable/mocks/decision/assigned.png"
+    },
+    {
+      "id": "model-pick",
+      "kind": "pick",
+      "label": "The Annual Report",
+      "kicker": "IMPECCABLE'S PICK",
+      "lineage": "corporate annual reports and MoU prospectuses",
+      "thesis": "The club printed as the document a partner signs against.",
+      "palette": ["#FFFFFF", "#1A1A1A", "#8A1F2D", "#B9B2A4"],
+      "materials": ["coated stock", "foil seal", "ruled ledger tables"],
+      "viewport": "A report cover-hero with folio numbers, ruled stat spreads, and a sign-here partner inquiry action.",
+      "risk": "Also the direction most credible-institution designs land on.",
+      "comp": ".impeccable/mocks/decision/model-pick.png"
+    },
+    {
+      "id": "challenger-fight-poster",
+      "kind": "challenger",
+      "catalogId": "posters-covers-sleeves-fight-poster",
+      "label": "The Fight Card",
+      "verdict": "competitive",
+      "lineage": "heavyweight fight posters",
+      "thesis": "The club's flagship events collide at poster scale.",
+      "palette": ["#F3EAD8", "#1B1B1B", "#C89B3C"],
+      "materials": ["slab caps", "letterpress ink"],
+      "viewport": "BizCase headline colliding across the fold, events stacked as undercard rows.",
+      "case": "Fuses cleanly: event drama and proof carry the page; loses narrowly on the partner offer.",
+      "risk": "Reads aggressive when the versus axis carries the navigation.",
+      "hero": "https://impeccable.style/worlds/cards/posters-covers-sleeves-fight-poster-hero.webp",
+      "comp": ".impeccable/mocks/decision/challenger-fight-poster.png"
+    },
+    {
+      "id": "challenger-papercut",
+      "kind": "challenger",
+      "catalogId": "craft-making-lowicz-layered-papercut",
+      "label": "The Layered Craft",
+      "verdict": "competitive",
+      "lineage": "Lowicz layered papercuts",
+      "thesis": "Skill-building shown as flat colour layers cut and pasted one over another.",
+      "palette": ["#F7F0DE", "#274B69", "#E25950", "#2E8C6A"],
+      "materials": ["flat paper layers", "fold symmetry"],
+      "viewport": "A symmetrical layered roundel carrying the club crest, benefits as pasted layers.",
+      "case": "Fuses cleanly: local folk-craft resonance and the layered-skills metaphor; loses narrowly on corporate credibility.",
+      "risk": "Reads boutique when the corporate proof is demoted.",
+      "hero": "https://impeccable.style/worlds/cards/craft-making-lowicz-layered-papercut-hero.webp",
+      "comp": ".impeccable/mocks/decision/challenger-papercut.png"
+    },
+    {
+      "id": "challenger-nixie",
+      "kind": "challenger",
+      "catalogId": "signals-instruments-nixie-laboratory-counter",
+      "label": "The Counting Board",
+      "verdict": "declined",
+      "lineage": "nixie-tube laboratory counters",
+      "case": "Fuses poorly: neither partner nor student identifies with laboratory instruments.",
+      "kept": "Visible numeric state - stats as living counts.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-nixie-laboratory-counter-hero.webp"
+    },
+    {
+      "id": "challenger-algorave",
+      "kind": "challenger",
+      "catalogId": "medium-native-algorave-source-floor",
+      "label": "The Algorave Floor",
+      "verdict": "declined",
+      "lineage": "algorave projection floors",
+      "case": "Fuses poorly: a live-code dance floor says party, not pipeline.",
+      "kept": "One shared clock for all page motion.",
+      "hero": "https://impeccable.style/worlds/cards/medium-native-algorave-source-floor-hero.webp"
+    },
+    {
+      "id": "challenger-greiman",
+      "kind": "challenger",
+      "catalogId": "digital-design-canon-greiman-hybrid-collage",
+      "label": "The Hybrid Collage",
+      "verdict": "declined",
+      "lineage": "April Greiman hybrid posters",
+      "case": "Fuses poorly: layered collage muddles the reading order a partner scan needs.",
+      "kept": "Scale jumps from footnote to billboard.",
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-greiman-hybrid-collage-hero.webp"
+    },
+    {
+      "id": "challenger-storm",
+      "kind": "challenger",
+      "catalogId": "dream-surreal-impossible-worlds-alphabet-storm",
+      "label": "The Alphabet Storm",
+      "verdict": "declined",
+      "lineage": "surreal letter weather",
+      "case": "Fuses poorly: type as weather cannot carry the club's factual proof.",
+      "kept": "Monumental type as structural mass.",
+      "hero": "https://impeccable.style/worlds/cards/dream-surreal-impossible-worlds-alphabet-storm-hero.webp"
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "buildPath": { "value": "comp", "toggle": true },
+  "canon": true,
+  "canonCard": {
+    "kind": "canon",
+    "id": "canon",
+    "label": "The category standard",
+    "thesis": "What a university club site ships, executed impeccably.",
+    "palette": ["#FFFFFF", "#111827", "#2563EB"],
+    "materials": ["clean grid", "event photography"],
+    "viewport": "The arrangement a visitor expects, at full craft.",
+    "risk": "Indistinguishable from any other club site by design.",
+    "comp": ".impeccable/mocks/decision/canon.png"
+  },
+  "steer": true
+}
