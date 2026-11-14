@@ -38,7 +38,7 @@ export default function LoginPage() {
                   JKKNIU-SDC
                 </span>
                 <span className="text-xs text-muted-foreground leading-tight">
-                  Skill Development Club
+                  JKKNIU Skill Development Club
                 </span>
               </div>
             </div>

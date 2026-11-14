@@ -143,7 +143,7 @@
   .display-caps {
     font-family: var(--font-display), Impact, sans-serif;
     text-transform: uppercase;
-    letter-spacing: 0.01em;
+    letter-spacing: -0.02em;
     line-height: 0.95;
   }
 

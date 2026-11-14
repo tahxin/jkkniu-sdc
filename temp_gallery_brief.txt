@@ -1,0 +1,1 @@
+Rewrite the gallery page in the new visual world, matching patterns from the completed home and about pages. Preserve all existing content and images.

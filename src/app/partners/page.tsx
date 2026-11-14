@@ -1,166 +1,159 @@
-import { TrendingUp, Users, Globe } from "lucide-react";
+import { TrendingUp, Users, Globe, Handshake, Target, BarChart, Award } from "lucide-react";
 import { PageBanner } from "@/components/world/PageBanner";
 import { Ticket } from "@/components/world/Ticket";
 
-/** Real MoU partners, as named on the club's record. */
 const MOU_PARTNERS = [
-  "AKIJ Resource",
-  "Rise Above All",
-  "AKIJ iBOS",
-  "Excellence Bangladesh",
-  "The Business Standard",
-  "US-Bangla Airlines",
+  { name: "AKIJ Resource", description: "Industrial conglomerate providing infrastructure and manufacturing pipelines." },
+  { name: "Rise Above All", description: "Leadership development and motivation platform for student growth." },
+  { name: "AKIJ iBOS", description: "Enterprise software solutions and digital transformation expertise." },
+  { name: "Excellence Bangladesh", description: "Strategic workforce development and career placement firm." },
+  { name: "The Business Standard", description: "National business daily providing industry insights and coverage." },
+  { name: "US-Bangla Airlines", description: "Travel partner connecting JKKNIU students to the world." },
 ];
 
-/** Supporters of BizCase 2026, the flagship competition. */
 const BIZCASE_SUPPORTERS = ["SR Dream IT", "US-Bangla", "TBS"];
 
 const BENEFITS = [
   {
     icon: TrendingUp,
-    title: "Brand exposure",
-    desc: "Reach 500+ active students and 2,500+ alumni across Bangladesh's growing professional community.",
+    title: "Brand Equity",
+    desc: "Position your brand at the center of JKKNIU—a leading public university. Gain visibility among 500+ elite student members and 2,500+ high-achieving alumni.",
   },
   {
     icon: Users,
-    title: "Talent pipeline",
-    desc: "Connect directly with top students for internships and full-time roles — the pipeline our job fairs and competitions are built to open.",
+    title: "Elite Talent Pipeline",
+    desc: "Direct access to pre-screened, club-trained talent. JKKNIU-SDC members are trained in corporate communication, leadership, and analytical thinking.",
   },
   {
     icon: Globe,
-    title: "Community impact",
-    desc: "Contribute to Bangladesh's next generation of skilled professionals and demonstrate your CSR commitment on campus.",
+    title: "Strategic Impact",
+    desc: "Collaborate on national-level competitions like BizCase. Demonstrate corporate social responsibility by investing in the next generation of human resources.",
+  },
+  {
+    icon: BarChart,
+    title: "Data-Driven Reach",
+    desc: "Leverage our event metrics for targeted recruitment. Our job fairs and competitions yield high engagement from students across the region.",
   },
 ];
 
-const inputClass =
-  "h-12 w-full rounded-md border border-input bg-cream px-4 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stamp/40 focus:border-stamp transition";
-
-export default function PartnersPage() {
+export default function Partners() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col dossier-grid">
       <PageBanner
-        title="Partners & sponsors"
-        intro="We collaborate with leading companies and organisations to bring real-world opportunities to our students. Together, we build a stronger professional ecosystem in Bangladesh."
-        tone="ink"
-        actions={
-          <Ticket href="#become-partner" tone="stamp" notch="var(--ink)">
-            Become a partner
-          </Ticket>
-        }
+        title="Corporate Alliances."
+        subtitle="Bridging the gap between academic potential and corporate excellence."
       />
 
-      {/* Partners of record */}
-      <section className="px-5 md:px-8 py-20 md:py-24">
+      {/* ══════════════════════════
+          THE PARTNER VALUE PROPOSITION
+          ══════════════════════════ */}
+      <section className="px-5 md:px-8 py-24 md:py-32 bg-white">
         <div className="container mx-auto max-w-6xl">
-          <h2 className="display-caps text-3xl md:text-4xl mb-3">Partners of record</h2>
-          <p className="text-[14.5px] text-muted-foreground max-w-[65ch] mb-10">
-            Organisations we have proudly collaborated with — MoUs signed to
-            pave the way for youth skill development, research, and innovation.
-          </p>
+          <div className="grid lg:grid-cols-[1fr_2px_1fr] gap-20 items-center">
+            <div>
+              <h2 className="display-caps text-5xl md:text-7xl mb-8 leading-none">
+                A Strategic <br /><span className="text-hall">Investment.</span>
+              </h2>
+              <p className="text-[1.1rem] leading-[1.8] text-muted-foreground mb-10">
+                JKKNIU-SDC is not just a student club; it is an incubator for Bangladesh&apos;s future corporate leaders. 
+                Our partners gain more than visibility—they gain a seat at the table where the next generation of 
+                talent is being shaped.
+              </p>
+              <Ticket href="/contact" tone="stamp" className="notch-tl px-12">
+                Inquire for MoU
+              </Ticket>
+            </div>
+            
+            <div className="hidden lg:block bg-paper-line h-full w-[2px]"></div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 border-t-2 border-ink">
-            {MOU_PARTNERS.map((name, i) => (
-              <div
-                key={name}
-                className="border-b border-r border-paper-line px-6 py-7 [&:nth-child(2n)]:border-r-0 lg:[&:nth-child(2n)]:border-r lg:[&:nth-child(3n)]:border-r-0"
-              >
-                <p className="text-[10px] font-bold tracking-[0.24em] uppercase text-muted-foreground mb-2 tabular-nums">
-                  MoU {String(i + 1).padStart(2, "0")}
-                </p>
-                <p className="display-caps text-[21px]">{name}</p>
+            <div className="grid sm:grid-cols-2 gap-10">
+              {BENEFITS.map((b) => {
+                const Icon = b.icon;
+                return (
+                  <div key={b.title} className="flex flex-col">
+                    <div className="bg-secondary/50 w-12 h-12 flex items-center justify-center mb-6 border border-paper-line rotate-45">
+                      <Icon className="h-6 w-6 text-hall -rotate-45" />
+                    </div>
+                    <h3 className="font-bold text-[18px] mb-3">{b.title}</h3>
+                    <p className="text-[14px] text-muted-foreground leading-relaxed">
+                      {b.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════
+          MoU PARTNERS BOARD
+          ══════════════════════════ */}
+      <section className="px-5 md:px-8 py-24 md:py-32 bg-ink text-white border-y-[3px] border-ink">
+        <div className="container mx-auto max-w-6xl">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div>
+              <p className="display-caps text-hall text-xl mb-4 tracking-widest">The Registry</p>
+              <h2 className="display-caps text-5xl md:text-7xl">Signed Alliances.</h2>
+            </div>
+            <p className="max-w-xs text-white/50 text-[13px] font-medium leading-relaxed">
+              We maintain active MoUs with Bangladesh&apos;s most influential organizations to facilitate knowledge exchange and career placement.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+            {MOU_PARTNERS.map((partner) => (
+              <div key={partner.name} className="bg-ink p-10 group hover:bg-hall/10 transition-colors">
+                <Handshake className="h-6 w-6 text-hall mb-8 opacity-40 group-hover:opacity-100 transition-opacity" />
+                <h3 className="display-caps text-2xl mb-4 group-hover:text-hall transition-colors">{partner.name}</h3>
+                <p className="text-white/60 text-[14px] leading-relaxed mb-6">{partner.description}</p>
+                <div className="h-1 w-10 bg-hall/30 group-hover:w-full transition-all duration-500"></div>
               </div>
             ))}
           </div>
 
-          {/* BizCase supporters */}
-          <div className="mt-10 border-t-2 border-ink pt-8">
-            <p className="text-[12px] font-bold tracking-[0.2em] uppercase text-event mb-4">
-              BizCase 2026 — supported by
-            </p>
-            <div className="flex flex-wrap gap-x-10 gap-y-3">
-              {BIZCASE_SUPPORTERS.map((name) => (
-                <p key={name} className="display-caps text-[20px] text-foreground/80">
-                  {name}
-                </p>
+          <div className="mt-20 pt-10 border-t border-white/10 flex flex-wrap items-center gap-12">
+            <p className="display-caps text-[12px] text-event tracking-[0.3em]">BizCase 2026 Sponsors</p>
+            <div className="flex items-center gap-10 opacity-60">
+              {BIZCASE_SUPPORTERS.map(name => (
+                <span key={name} className="font-bold text-lg tracking-tight">{name}</span>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* Why partner */}
-      <section className="px-5 md:px-8 py-20 md:py-24 bg-secondary/60 border-y-[3px] border-ink">
-        <div className="container mx-auto max-w-6xl">
-          <h2 className="display-caps text-3xl md:text-4xl mb-10">Why partner with us?</h2>
-          <div className="grid md:grid-cols-3 gap-x-14">
-            {BENEFITS.map(({ icon: Icon, title, desc }, i) => (
-              <div key={title} className="program-row py-7">
-                <div className="flex items-center gap-3 mb-3">
-                  <span className="display-caps text-[15px] text-primary tabular-nums">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <Icon className="h-5 w-5 text-hall" />
-                </div>
-                <h3 className="font-bold text-[17px] mb-2">{title}</h3>
-                <p className="text-[14px] text-muted-foreground leading-[1.65]">{desc}</p>
-              </div>
-            ))}
+      {/* ══════════════════════════
+          ENGAGEMENT MODELS
+          ══════════════════════════ */}
+      <section className="px-5 md:px-8 py-24 md:py-40 bg-white">
+        <div className="container mx-auto max-w-4xl text-center">
+          <div className="inline-flex items-center gap-3 mb-10">
+            <div className="h-px w-10 bg-paper-line"></div>
+            <span className="text-[11px] font-bold uppercase tracking-[0.4em] text-muted-foreground">How We Work</span>
+            <div className="h-px w-10 bg-paper-line"></div>
           </div>
-        </div>
-      </section>
+          <h2 className="display-caps text-5xl md:text-7xl mb-12">Flexible <br />Collaboration.</h2>
+          
+          <div className="grid md:grid-cols-3 gap-8 text-left">
+            <div className="border-2 border-ink p-8">
+              <h3 className="font-bold mb-4 flex items-center gap-2"><Target className="h-5 w-5 text-stamp" /> Recruitment</h3>
+              <p className="text-[14px] text-muted-foreground">On-campus job fairs and priority access to our top 5% talent pool.</p>
+            </div>
+            <div className="border-2 border-ink p-8">
+              <h3 className="font-bold mb-4 flex items-center gap-2"><Award className="h-5 w-5 text-brass" /> Branding</h3>
+              <p className="text-[14px] text-muted-foreground">Named sponsorship for national competitions and visibility on all assets.</p>
+            </div>
+            <div className="border-2 border-ink p-8">
+              <h3 className="font-bold mb-4 flex items-center gap-2"><Users className="h-5 w-5 text-hall" /> Training</h3>
+              <p className="text-[14px] text-muted-foreground">Expert sessions and workshops led by your corporate professionals.</p>
+            </div>
+          </div>
 
-      {/* Inquiry form */}
-      <section id="become-partner" className="px-5 md:px-8 py-20 md:py-24 scroll-mt-24">
-        <div className="container mx-auto max-w-3xl">
-          <div className="bg-card border-2 border-ink p-7 sm:p-12">
-            <h2 className="display-caps text-3xl md:text-4xl mb-3">Become a partner</h2>
-            <p className="text-[14.5px] text-muted-foreground leading-[1.7] mb-10 max-w-[60ch]">
-              Fill out the form below and our partnership team will get back to
-              you within 2 business days.
-            </p>
-
-            <form method="POST" className="flex flex-col gap-5">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="p-name" className="text-[13px] font-bold uppercase tracking-[0.06em]">
-                    Your name
-                  </label>
-                  <input id="p-name" name="name" type="text" placeholder="Full name" className={inputClass} />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="p-company" className="text-[13px] font-bold uppercase tracking-[0.06em]">
-                    Company
-                  </label>
-                  <input id="p-company" name="company" type="text" placeholder="Company name" className={inputClass} />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="p-email" className="text-[13px] font-bold uppercase tracking-[0.06em]">
-                  Email address
-                </label>
-                <input id="p-email" name="email" type="email" placeholder="you@company.com" className={inputClass} />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label htmlFor="p-message" className="text-[13px] font-bold uppercase tracking-[0.06em]">
-                  Message
-                </label>
-                <textarea
-                  id="p-message"
-                  name="message"
-                  rows={4}
-                  placeholder="Tell us about your partnership goals…"
-                  className="w-full rounded-md border border-input bg-cream px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/60 focus:outline-none focus:ring-2 focus:ring-stamp/40 focus:border-stamp transition resize-none"
-                />
-              </div>
-              <button
-                type="submit"
-                className="stub self-start inline-flex touch-target items-center bg-stamp text-white text-[14px] font-bold uppercase tracking-[0.08em] px-8 py-3.5 hover:brightness-110 transition-[filter]"
-                style={{ ["--notch" as string]: "var(--card)" }}
-              >
-                Submit enquiry
-              </button>
-            </form>
+          <div className="mt-24">
+            <Ticket href="/contact" tone="stamp" className="notch-tl px-20 py-5 text-lg">
+              Start The Conversation
+            </Ticket>
           </div>
         </div>
       </section>
