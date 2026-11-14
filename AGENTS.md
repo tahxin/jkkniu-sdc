@@ -35,13 +35,14 @@ shadcn/ui. See `README.md` for the full stack and setup steps.
 
 ## Design system
 
-The site uses a custom "Job Fair Hall" visual world — don't drift out of it.
+The site uses a custom "Job Fair Hall" visual world — don't drift out of it. Brand colors are inferred directly from the official JKKNIU-SDC logo (emblem ring, reaching figures, gears, and wordmark).
 
 - **Tokens** (in `src/app/globals.css` `:root`):
   - `--cream #F4EFE3` background / `--ink #101010` text and rules
-  - `--hall #0F5132` deep green for banner panels
-  - `--stamp #D63324` primary action color (reserved)
-  - `--brass #F2C230` signage, counters, selection
+  - `--hall #29ABE2` sky blue (primary emblem & SDC wordmark authority)
+  - `--stamp #DB3B79` magenta/pink (reaching center figure & energy accent)
+  - `--brass #F7C646` golden yellow (left figure, gears, and highlight moments)
+  - `--primary #D63324` stamp red (reserved for special event highlights like BizCase)
 - **Display type.** `.display-caps` (Anton) for headlines; `Archivo` for body.
   Uppercase, tight line-height, letter-spacing 0.01–0.24em.
 - **Components.** `Ticket` (stub action), `CounterBoard` (ticking stats),
