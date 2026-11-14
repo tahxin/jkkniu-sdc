@@ -5,9 +5,11 @@ import { CounterBoard } from "@/components/world/CounterBoard";
 
 const BOOTHS = [
   "AKIJ Resource",
-  "US-Bangla Airlines",
-  "The Business Standard",
+  "Rise Above All",
+  "AKIJ iBOS",
   "Excellence Bangladesh",
+  "The Business Standard",
+  "US-Bangla Airlines",
 ];
 
 const MARQUEE_ITEMS = [
